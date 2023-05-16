@@ -2,7 +2,10 @@ package com.example.m3_01_08_reiseplaner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,5 +14,12 @@ public class MainActivity extends AppCompatActivity {
         //If you see this, your pull was successful
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Navigates to "SignInActivity" by clicking "Sign In" TextView
+        TextView SignInText = findViewById(R.id.SignInText);
+        SignInText.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+            startActivity(intent);
+        });
     }
 }
