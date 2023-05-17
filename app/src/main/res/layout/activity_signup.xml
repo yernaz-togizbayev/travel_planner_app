@@ -2,14 +2,24 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:animateLayoutChanges="false"
+    android:animateLayoutChanges="true"
     android:background="#DEF0F7"
-    android:isScrollContainer="false"
-    android:nestedScrollingEnabled="false"
+    android:clickable="true"
+    android:fadeScrollbars="true"
+    android:isScrollContainer="true"
+    android:nestedScrollingEnabled="true"
+    android:overScrollMode="always"
     android:scrollIndicators="right"
-    android:scrollbarAlwaysDrawVerticalTrack="false"
+    android:scrollbarAlwaysDrawHorizontalTrack="false"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarStyle="insideInset"
+    android:scrollbars="vertical"
+    android:verticalScrollbarPosition="right"
+    app:layout_scrollEffect="compress"
+    app:layout_scrollFlags="scroll"
     tools:context=".SignUpActivity">
 
     <TextView
@@ -152,7 +162,7 @@
 
     <Spinner
         android:id="@+id/CountryDropDown"
-        android:layout_width="340dp"
+        android:layout_width="335dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:contextClickable="true"
