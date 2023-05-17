@@ -18,4 +18,9 @@ public class SignInActivity extends AppCompatActivity {
         Intent intent = new Intent(SignInActivity.this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void SignInButtonPress(View view) {
+        Intent intent = new Intent(SignInActivity.this, MainMenuActivity.class);
+        startActivity(intent);
+    }
 }
