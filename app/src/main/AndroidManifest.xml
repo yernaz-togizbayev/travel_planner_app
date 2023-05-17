@@ -22,7 +22,7 @@
             android:name=".SignInActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".StartScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
