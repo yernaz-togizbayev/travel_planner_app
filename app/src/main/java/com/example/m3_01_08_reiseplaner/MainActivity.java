@@ -21,5 +21,12 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, SignInActivity.class);
             startActivity(intent);
         });
+
+        // Navigates to "SignUpActivity" by clicking "Sign Up" TextView
+        TextView SignUpText = findViewById(R.id.SignUpText);
+        SignUpText.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+            startActivity(intent);
+        });
     }
 }
