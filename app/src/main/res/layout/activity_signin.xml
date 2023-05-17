@@ -32,82 +32,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <EditText
         android:id="@+id/editTextTextEmailAddress4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:drawableLeft="@android:drawable/sym_action_email"
         android:drawableTint="#808080"
         android:ems="14"
-        android:hint="Email"
+        android:hint=" Email"
         android:inputType="textEmailAddress"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <EditText
         android:id="@+id/editTextTextPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="155dp"
+        android:layout_marginTop="35dp"
         android:drawableLeft="@android:drawable/ic_lock_idle_lock"
         android:drawableTint="#808080"
         android:ems="14"
-        android:hint="Password"
+        android:hint=" Password"
         android:inputType="textPassword"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress4" />
 
     <Button
         android:id="@+id/SignInButton"
-        android:layout_width="wrap_content"
+        android:layout_width="333dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#0692DD"
+        android:layout_marginTop="35dp"
+        android:backgroundTint="#155FD4"
         android:fontFamily="sans-serif-medium"
         android:text="SIGN IN"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
 
     <TextView
         android:id="@+id/SignInGoback"
