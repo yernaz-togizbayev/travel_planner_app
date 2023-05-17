@@ -38,6 +38,11 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void SignUpGoBackPress(View view) {
+        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
     // Function to read json file
     @NonNull
     private String readJsonFile(InputStream inputStream) throws IOException {
