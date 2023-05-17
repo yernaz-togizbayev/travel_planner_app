@@ -39,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void SignUpGoBackPress(View view) {
-        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+        Intent intent = new Intent(SignUpActivity.this, StartScreenActivity.class);
         startActivity(intent);
     }
 

@@ -4,28 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
-
+public class StartScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //If you see this, your pull was successful
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_startscreen);
 
         // Navigates to "SignInActivity" by clicking "Sign In" TextView
         TextView SignInText = findViewById(R.id.SignInText);
         SignInText.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+            Intent intent = new Intent(StartScreenActivity.this, SignInActivity.class);
             startActivity(intent);
         });
 
         // Navigates to "SignUpActivity" by clicking "Sign Up" TextView
         TextView SignUpText = findViewById(R.id.SignUpText);
         SignUpText.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+            Intent intent = new Intent(StartScreenActivity.this, SignUpActivity.class);
             startActivity(intent);
         });
     }

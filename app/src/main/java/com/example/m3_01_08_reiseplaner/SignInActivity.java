@@ -15,7 +15,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void SignInGoBackPress(View view) {
-        Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+        Intent intent = new Intent(SignInActivity.this, StartScreenActivity.class);
         startActivity(intent);
     }
 
