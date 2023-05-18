@@ -17,53 +17,6 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
-
-        // Initial user 1
-        User MaxMustermann = new User (
-                "Max",
-                "Mustermann",
-                "01.01.2000",
-                "Wahringer Strasse",
-                "29",
-                "Vienna",
-                "1090",
-                "Austria",
-                "max.mustermann@gmail.com",
-                "Max123"
-        );
-
-        // Initial user 2
-        User ErikaMustermann = new User (
-                "Erika",
-                "Mustermann",
-                "01.01.2000",
-                "Wahringer Strasse",
-                "29",
-                "Vienna",
-                "1090",
-                "Austria",
-                "erika.mustermann@gmail.com",
-                "Erika123"
-        );
-
-        // Initial user 3
-        User JohnDoe = new User (
-                "John",
-                "Doe",
-                "01.01.2000",
-                "Miami Beach",
-                "5",
-                "Florida",
-                "33109",
-                "United States",
-                "john.doe@gmail.com",
-                "John123"
-        );
-
-        // Add all 3 users to a list of users
-        SignUpActivity.getUserList().add(MaxMustermann);
-        SignUpActivity.getUserList().add(ErikaMustermann);
-        SignUpActivity.getUserList().add(JohnDoe);
     }
 
     public void SignInGoBackPress(View view) {
