@@ -2,6 +2,7 @@ package com.example.m3_01_08_reiseplaner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,11 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
       //  setUpActivity();
+    }
+
+    public void newTravelButtonPress(View view){
+        Intent travelIntent = new Intent(this, SearchTravelActivity.class);
+        startActivity(travelIntent);
     }
 
     /**
