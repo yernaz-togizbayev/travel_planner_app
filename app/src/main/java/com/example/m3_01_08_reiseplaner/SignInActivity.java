@@ -4,7 +4,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -78,12 +80,12 @@ public class SignInActivity extends AppCompatActivity {
         User user = findUserByEmail(email);
 
         if (user != null && user.getPassword().equals(password)) {
-            Toast.makeText(this, "Sign in successful", Toast.LENGTH_LONG).show();
+            showPopupMessage("SignIn was successful", Gravity.CENTER, Color.parseColor("#a4e8c0"));
             Intent intent = new Intent(SignInActivity.this, MainMenuActivity.class);
             startActivity(intent);
         }
         else {
-            Toast.makeText(this, "Invalid email or password", Toast.LENGTH_LONG).show();
+            showPopupMessage("Invalid email or password", Gravity.CENTER, Color.parseColor("#eea29e"));
         }
     }
 
@@ -95,5 +97,15 @@ public class SignInActivity extends AppCompatActivity {
             }
         }
         return null;
+    }
+
+    private void showPopupMessage(String textMessage, int gravity, int backgroundColor) {
+        Toast popupMessage = Toast.makeText(this, textMessage, Toast.LENGTH_LONG);
+
+        View popupMessageView = popupMessage.getView();
+        popupMessageView.setBackgroundColor(backgroundColor);
+
+        popupMessage.setGravity(gravity, 0, 0);
+        popupMessage.show();
     }
 }
