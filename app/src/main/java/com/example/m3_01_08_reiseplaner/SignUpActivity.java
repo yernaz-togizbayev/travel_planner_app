@@ -3,10 +3,13 @@ package com.example.m3_01_08_reiseplaner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import org.json.JSONArray;
@@ -24,6 +27,7 @@ import java.util.List;
 
 public class SignUpActivity extends AppCompatActivity {
     private Spinner countryDropDown;
+    private static List<User> userList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +38,31 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void SignUpButtonPress(View view) {
+        EditText firstNameEditText = findViewById(R.id.FirstNameEditText);
+        EditText lastNameEditText = findViewById(R.id.LastNameEditText);
+        EditText dateOfBirthEditText = findViewById(R.id.DateOfBirthEditText);
+        EditText streetEditText = findViewById(R.id.StreetEditText);
+        EditText houseNrEditText = findViewById(R.id.HouseNrEditText);
+        EditText cityEditText = findViewById(R.id.CityEditText);
+        EditText zipCodeEditText = findViewById(R.id.ZipCodeEditText);
+        String country = countryDropDown.getSelectedItem().toString();
+        EditText emailEditText = findViewById(R.id.SignupEmailEditText);
+        EditText passwordSignupEditText = findViewById(R.id.SignupPasswordEditText);
+
+        User user = new User(
+                firstNameEditText.getText().toString(),
+                lastNameEditText.getText().toString(),
+                dateOfBirthEditText.getText().toString(),
+                streetEditText.getText().toString(),
+                houseNrEditText.getText().toString(),
+                cityEditText.getText().toString(),
+                zipCodeEditText.getText().toString(),
+                country,
+                emailEditText.getText().toString(),
+                passwordSignupEditText.getText().toString());
+
+        userList.add(user);
+
         Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
         startActivity(intent);
     }
@@ -43,7 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Function to read json file
+    // Function to read countries.json file
     @NonNull
     private String readJsonFile(InputStream inputStream) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
@@ -86,4 +115,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
+    public static List<User> getUserList() {
+        return userList;
+    }
 }
