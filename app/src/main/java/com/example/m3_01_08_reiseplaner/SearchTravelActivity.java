@@ -27,6 +27,9 @@ public class SearchTravelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_travel);
     }
 
+    /**
+     * Fetches the result for the Departure Date after entering the calendar activity
+     */
     ActivityResultLauncher<Intent> setDepatureDateResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
@@ -37,6 +40,10 @@ public class SearchTravelActivity extends AppCompatActivity {
     });
 
 
+    /**
+     * Sets the Departure Text with the value from the Calendar Activity
+     * @param data
+     */
     private void setDepartureDateText(Intent data){
         if(data == null){
             return;
@@ -48,9 +55,53 @@ public class SearchTravelActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * When pressed on the Calendar Button, a Calendar Activity will open,
+     * where a Date for Departure can be selected
+     * @param view
+     */
     public void onDepartureDateButtonPress(View view){
         Intent departureDateCalendarIntent = new Intent(this, CalendarActivity.class);
         setDepatureDateResult.launch(departureDateCalendarIntent);
+    }
+
+
+
+    /**
+     * Fetches the result for the Return Date after entering the calendar activity
+     */
+    ActivityResultLauncher<Intent> setReturnDateResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if(result != null && result.getResultCode() == RESULT_OK){
+                setReturnDateText(result.getData());
+            }
+        }
+    });
+
+
+    /**
+     * Sets the Return Text with the value from the Calendar Activity
+     * @param data
+     */
+    private void setReturnDateText(Intent data){
+        if(data == null){
+            return;
+        }
+        LocalDate departureDate = (LocalDate) data.getSerializableExtra(INTENT_KEY_CALENDER);
+        EditText departureDateText = findViewById(R.id.returnDateText);
+        String departureDateOutput = LocalDateConverter.localDateToString(departureDate);
+        departureDateText.setText(departureDateOutput);
+    }
+
+
+    /**
+     * When pressed on the Calendar Button, a Calendar Activity will open,
+     * where a Date for Return can be selected
+     * @param view
+     */
+    public void onReturnDateButtonPress(View view){
+        Intent departureDateCalendarIntent = new Intent(this, CalendarActivity.class);
+        setReturnDateResult.launch(departureDateCalendarIntent);
     }
 }
