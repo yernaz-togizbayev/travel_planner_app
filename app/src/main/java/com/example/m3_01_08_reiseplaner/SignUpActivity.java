@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +28,7 @@ import java.util.List;
 
 public class SignUpActivity extends AppCompatActivity {
     private Spinner countryDropDown;
+    private static List<User> userList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +39,49 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void SignUpButtonPress(View view) {
-        Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
-        startActivity(intent);
+        String firstName = ((EditText) findViewById(R.id.FirstNameEditText)).getText().toString();
+        String lastName = ((EditText) findViewById(R.id.LastNameEditText)).getText().toString();
+        String dateOfBirth = ((EditText) findViewById(R.id.DateOfBirthEditText)).getText().toString();
+        String street = ((EditText) findViewById(R.id.StreetEditText)).getText().toString();
+        String houseNr = ((EditText) findViewById(R.id.HouseNrEditText)).getText().toString();
+        String city = ((EditText) findViewById(R.id.CityEditText)).getText().toString();
+        String zipCode = ((EditText) findViewById(R.id.ZipCodeEditText)).getText().toString();
+        String country = countryDropDown.getSelectedItem().toString();
+        String email = ((EditText) findViewById(R.id.SignupEmailEditText)).getText().toString();
+        String password = ((EditText) findViewById(R.id.SignupPasswordEditText)).getText().toString();
+        String confirmPassword = ((EditText) findViewById(R.id.SignupConfirmPasswordEditText)).getText().toString();
+
+        if (firstName.isEmpty())
+            showSignUpPopupMessage("Please enter a name!", Gravity.CENTER, Color.parseColor("#eea29e"));
+        else if (lastName.isEmpty())
+            showSignUpPopupMessage("Please enter a surname!", Gravity.CENTER, Color.parseColor("#eea29e"));
+        else if (email.isEmpty())
+            showSignUpPopupMessage("Please enter an email!", Gravity.CENTER, Color.parseColor("#eea29e"));
+        else if (password.isEmpty())
+            showSignUpPopupMessage("Please enter a password!", Gravity.CENTER, Color.parseColor("#eea29e"));
+        else {
+            if (password.equals(confirmPassword)) {
+                User user;
+                user = new User(
+                        firstName,
+                        lastName,
+                        dateOfBirth,
+                        street,
+                        houseNr,
+                        city,
+                        zipCode,
+                        country,
+                        email,
+                        password);
+
+                userList.add(user);
+                showSignUpPopupMessage("SignUp was successful", Gravity.CENTER, Color.parseColor("#a4e8c0"));
+                Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+                startActivity(intent);
+            } else {
+                showSignUpPopupMessage("Passwords are not match. Please try again", Gravity.CENTER, Color.parseColor("#eea29e"));
+            }
+        }
     }
 
     public void SignUpGoBackPress(View view) {
@@ -43,7 +89,7 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Function to read json file
+    // Function to read countries.json file
     @NonNull
     private String readJsonFile(InputStream inputStream) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
@@ -84,6 +130,20 @@ public class SignUpActivity extends AppCompatActivity {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public static List<User> getUserList() {
+        return userList;
+    }
+
+    private void showSignUpPopupMessage(String textMessage, int gravity, int backgroundColor) {
+        Toast popupMessage = Toast.makeText(this, textMessage, Toast.LENGTH_LONG);
+
+        View popupMessageView = popupMessage.getView();
+        popupMessageView.setBackgroundColor(backgroundColor);
+
+        popupMessage.setGravity(gravity, 0, 0);
+        popupMessage.show();
     }
 
 }
