@@ -3,14 +3,13 @@ package com.example.m3_01_08_reiseplaner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,33 +37,40 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void SignUpButtonPress(View view) {
-        EditText firstNameEditText = findViewById(R.id.FirstNameEditText);
-        EditText lastNameEditText = findViewById(R.id.LastNameEditText);
-        EditText dateOfBirthEditText = findViewById(R.id.DateOfBirthEditText);
-        EditText streetEditText = findViewById(R.id.StreetEditText);
-        EditText houseNrEditText = findViewById(R.id.HouseNrEditText);
-        EditText cityEditText = findViewById(R.id.CityEditText);
-        EditText zipCodeEditText = findViewById(R.id.ZipCodeEditText);
-        String country = countryDropDown.getSelectedItem().toString();
-        EditText emailEditText = findViewById(R.id.SignupEmailEditText);
-        EditText passwordSignupEditText = findViewById(R.id.SignupPasswordEditText);
 
-        User user = new User(
-                firstNameEditText.getText().toString(),
-                lastNameEditText.getText().toString(),
-                dateOfBirthEditText.getText().toString(),
-                streetEditText.getText().toString(),
-                houseNrEditText.getText().toString(),
-                cityEditText.getText().toString(),
-                zipCodeEditText.getText().toString(),
-                country,
-                emailEditText.getText().toString(),
-                passwordSignupEditText.getText().toString());
+        String password = ((EditText) findViewById(R.id.SignupPasswordEditText)).getText().toString();
+        String confirmPassword = ((EditText) findViewById(R.id.SignupConfirmPasswordEditText)).getText().toString();
 
-        userList.add(user);
+        if (password.equals(confirmPassword)) {
+            User user;
+            EditText firstNameEditText = findViewById(R.id.FirstNameEditText);
+            EditText lastNameEditText = findViewById(R.id.LastNameEditText);
+            EditText dateOfBirthEditText = findViewById(R.id.DateOfBirthEditText);
+            EditText streetEditText = findViewById(R.id.StreetEditText);
+            EditText houseNrEditText = findViewById(R.id.HouseNrEditText);
+            EditText cityEditText = findViewById(R.id.CityEditText);
+            EditText zipCodeEditText = findViewById(R.id.ZipCodeEditText);
+            String country = countryDropDown.getSelectedItem().toString();
+            EditText emailEditText = findViewById(R.id.SignupEmailEditText);
+            user = new User(
+                    firstNameEditText.getText().toString(),
+                    lastNameEditText.getText().toString(),
+                    dateOfBirthEditText.getText().toString(),
+                    streetEditText.getText().toString(),
+                    houseNrEditText.getText().toString(),
+                    cityEditText.getText().toString(),
+                    zipCodeEditText.getText().toString(),
+                    country,
+                    emailEditText.getText().toString(),
+                    password);
 
-        Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
-        startActivity(intent);
+            userList.add(user);
+            Toast.makeText(this, "Sign up was successful!", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Passwords are not match. Please try again.", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void SignUpGoBackPress(View view) {
