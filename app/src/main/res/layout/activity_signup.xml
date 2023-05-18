@@ -47,30 +47,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/LastNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/user_icon"
         android:ems="14"
         android:fontFamily="sans-serif"
-        android:hint="Last Name"
+        android:hint="Last Name*"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+        app:layout_constraintTop_toBottomOf="@+id/FirstNameEditText" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/FirstNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:drawableLeft="@drawable/user_icon"
         android:ems="14"
         android:fontFamily="sans-serif"
-        android:hint="First Name"
+        android:hint="First Name*"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,14 +79,14 @@
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/SignupEmailEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:drawableLeft="@android:drawable/sym_action_email"
         android:drawableTint="#808080"
         android:ems="14"
-        android:hint="Email"
+        android:hint=" Email*"
         android:inputType="textEmailAddress"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,36 +95,36 @@
         app:layout_constraintTop_toBottomOf="@+id/CountryDropDown" />
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/DateOfBirthEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/calender_icon"
         android:ems="14"
-        android:hint="Date of Birth"
+        android:hint=" Date of Birth"
         android:inputType="date"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/LastNameEditText" />
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/StreetEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/address_icon"
         android:ems="11"
-        android:hint="Street"
+        android:hint=" Street"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintTop_toBottomOf="@+id/DateOfBirthEditText" />
 
     <EditText
-        android:id="@+id/editTextNumberSigned"
+        android:id="@+id/HouseNrEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -133,23 +133,23 @@
         android:hint="Nr."
         android:inputType="numberSigned"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextText4"
+        app:layout_constraintBottom_toBottomOf="@+id/StreetEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextText4" />
+        app:layout_constraintStart_toEndOf="@+id/StreetEditText" />
 
     <EditText
-        android:id="@+id/editTextTextPostalAddress"
+        android:id="@+id/ZipCodeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:ems="4"
         android:hint="ZIP"
         android:inputType="textPostalAddress"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextText"
+        app:layout_constraintBottom_toBottomOf="@+id/CityEditText"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/CityEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -158,7 +158,7 @@
         android:hint="City"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
+        app:layout_constraintTop_toBottomOf="@+id/StreetEditText" />
 
     <Spinner
         android:id="@+id/CountryDropDown"
@@ -175,40 +175,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/ZipCodeEditText" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/SignupPasswordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:drawableLeft="@android:drawable/ic_lock_idle_lock"
         android:drawableTint="#808080"
         android:ems="14"
-        android:hint="Password"
+        android:hint=" Password*"
         android:inputType="textPassword"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/SignupEmailEditText" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/SignupConfirmPasswordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:drawableLeft="@android:drawable/ic_lock_idle_lock"
         android:drawableTint="#808080"
         android:ems="14"
-        android:hint="Confirm password"
+        android:hint=" Confirm password*"
         android:inputType="textPassword"
         android:scrollbarSize="10dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/SignupPasswordEditText" />
 
     <Button
         android:id="@+id/SignUpButton"
@@ -221,7 +221,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
+        app:layout_constraintTop_toBottomOf="@+id/SignupConfirmPasswordEditText" />
 
     <TextView
         android:id="@+id/SignInGoback"
