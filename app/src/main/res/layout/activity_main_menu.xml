@@ -94,6 +94,7 @@
             android:layout_height="99dp"
             android:backgroundTint="#094AB1"
             android:fontFamily="sans-serif-medium"
+            android:onClick="newTravelButtonPress"
             android:text="New Travel"
             android:textAlignment="center"
             android:textAllCaps="false"
