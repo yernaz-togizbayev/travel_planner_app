@@ -33,12 +33,12 @@ public class SignInActivity extends AppCompatActivity {
         User user = findUserByEmail(email);
 
         if (user != null && user.getPassword().equals(password)) {
-            showSignInPopupMessage("SignIn was successful", Gravity.CENTER, Color.parseColor("#a4e8c0"));
+            showSignInPopupMessage("SignIn was successful", Color.parseColor("#a4e8c0"));
             Intent intent = new Intent(SignInActivity.this, MainMenuActivity.class);
             startActivity(intent);
         }
         else {
-            showSignInPopupMessage("Invalid email or password", Gravity.CENTER, Color.parseColor("#eea29e"));
+            showSignInPopupMessage("Invalid email or password", Color.parseColor("#eea29e"));
         }
     }
 
@@ -52,13 +52,13 @@ public class SignInActivity extends AppCompatActivity {
         return null;
     }
 
-    private void showSignInPopupMessage(String textMessage, int gravity, int backgroundColor) {
+    private void showSignInPopupMessage(String textMessage, int backgroundColor) {
         Toast popupMessage = Toast.makeText(this, textMessage, Toast.LENGTH_LONG);
 
         View popupMessageView = popupMessage.getView();
         popupMessageView.setBackgroundColor(backgroundColor);
 
-        popupMessage.setGravity(gravity, 0, 0);
+        popupMessage.setGravity(Gravity.CENTER, 0, 0);
         popupMessage.show();
     }
 }
