@@ -60,26 +60,32 @@ public class SignUpActivity extends AppCompatActivity {
         else if (password.isEmpty())
             showSignUpPopupMessage("Please enter a password!", Gravity.CENTER, Color.parseColor("#eea29e"));
         else {
-            if (password.equals(confirmPassword)) {
-                User user;
-                user = new User(
-                        firstName,
-                        lastName,
-                        dateOfBirth,
-                        street,
-                        houseNr,
-                        city,
-                        zipCode,
-                        country,
-                        email,
-                        password);
+            if (isPasswordValid(password)) {
+                if (password.equals(confirmPassword)) {
+                    User user;
+                    user = new User(
+                            firstName,
+                            lastName,
+                            dateOfBirth,
+                            street,
+                            houseNr,
+                            city,
+                            zipCode,
+                            country,
+                            email,
+                            password);
 
-                userList.add(user);
-                showSignUpPopupMessage("SignUp was successful", Gravity.CENTER, Color.parseColor("#a4e8c0"));
-                Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
-                startActivity(intent);
+                    userList.add(user);
+                    showSignUpPopupMessage("SignUp was successful", Gravity.CENTER, Color.parseColor("#a4e8c0"));
+                    Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+                    startActivity(intent);
+                } else {
+                    showSignUpPopupMessage("Passwords don't match. Please try again", Gravity.CENTER, Color.parseColor("#eea29e"));
+                }
             } else {
-                showSignUpPopupMessage("Passwords are not match. Please try again", Gravity.CENTER, Color.parseColor("#eea29e"));
+                showSignUpPopupMessage("Invalid password. Please make sure that password meets all the requirements.",
+                        Gravity.CENTER,
+                        Color.parseColor("#eea29e"));
             }
         }
     }
@@ -145,6 +151,30 @@ public class SignUpActivity extends AppCompatActivity {
     public static List<User> getUserList() {
         return userList;
     }
+
+    private boolean isPasswordValid(String password) {
+        // Check if the password meets the requirements
+        boolean hasUppercase = false;
+        boolean hasLowercase = false;
+        boolean hasDigit = false;
+
+        if (password.length() < 6) {
+            return false;
+        }
+
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                hasUppercase = true;
+            } else if (Character.isLowerCase(c)) {
+                hasLowercase = true;
+            } else if (Character.isDigit(c)) {
+                hasDigit = true;
+            }
+        }
+
+        return hasUppercase && hasLowercase && hasDigit;
+    }
+
 
     private void showSignUpPopupMessage(String textMessage, int gravity, int backgroundColor) {
         Toast popupMessage = Toast.makeText(this, textMessage, Toast.LENGTH_LONG);
