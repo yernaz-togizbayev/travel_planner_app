@@ -89,6 +89,16 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void passwordRequirementsIconPress(View view) {
+        showSignUpPopupMessage( "Password must:\n" +
+                        "\t* contain at least 1 uppercase letter\n" +
+                        "\t* contain at least 1 lowercase letter\n" +
+                        "\t* contain at least 1 digit\n" +
+                        "\t* be a minimum of 6 characters in length",
+                Gravity.NO_GRAVITY,
+                Color.parseColor("#eea29e"));
+    }
+
     // Function to read countries.json file
     @NonNull
     private String readJsonFile(InputStream inputStream) throws IOException {
