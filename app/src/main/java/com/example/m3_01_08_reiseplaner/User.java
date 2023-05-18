@@ -1,17 +1,16 @@
 package com.example.m3_01_08_reiseplaner;
 
 public class User {
-    private String firstName;
-    private String lastName;
-    private String dateOfBirth;
-    private String street;
-    private String houseNumber;
-    private String city;
-    private String zip;
-    private String country;
-    private String email;
-    private String password;
-    private String confirmPassword;
+    private final String firstName;
+    private final String lastName;
+    private final String dateOfBirth;
+    private final String street;
+    private final String houseNumber;
+    private final String city;
+    private final String zip;
+    private final String country;
+    private final String email;
+    private final String password;
 
 
     public User(String firstName,

@@ -28,7 +28,7 @@ import java.util.List;
 
 public class SignUpActivity extends AppCompatActivity {
     private Spinner countryDropDown;
-    private static List<User> userList = new ArrayList<>();
+    private static final List<User> userList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,32 +54,26 @@ public class SignUpActivity extends AppCompatActivity {
         if (firstName.isEmpty()) {
             showSignUpPopupMessage(
                     "Please enter a name!",
-                    Gravity.CENTER,
-                    Color.parseColor(
-                            "#eea29e"));
+                    Color.parseColor("#eea29e"));
         }
         else if (lastName.isEmpty()) {
             showSignUpPopupMessage(
                     "Please enter a surname!",
-                    Gravity.CENTER,
                     Color.parseColor("#eea29e"));
         }
         else if (email.isEmpty()) {
             showSignUpPopupMessage(
                     "Please enter an email!",
-                    Gravity.CENTER,
                     Color.parseColor("#eea29e"));
         }
         else if (password.isEmpty()) {
             showSignUpPopupMessage(
                     "Please enter a password!",
-                    Gravity.CENTER,
                     Color.parseColor("#eea29e"));
         }
         else if (isUserEmailPresent(email)) {
             showSignUpPopupMessage(
                     "User with this email has been already registered. Please use another email.",
-                    Gravity.CENTER,
                     Color.parseColor("#eea29e"));
         }
         else {
@@ -99,15 +93,17 @@ public class SignUpActivity extends AppCompatActivity {
                             password);
 
                     userList.add(user);
-                    showSignUpPopupMessage("SignUp was successful", Gravity.CENTER, Color.parseColor("#a4e8c0"));
+                    showSignUpPopupMessage("SignUp was successful", Color.parseColor("#a4e8c0"));
                     Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                     startActivity(intent);
                 } else {
-                    showSignUpPopupMessage("Passwords don't match. Please try again", Gravity.CENTER, Color.parseColor("#eea29e"));
+                    showSignUpPopupMessage(
+                            "Passwords don't match. Please try again",
+                            Color.parseColor("#eea29e"));
                 }
             } else {
-                showSignUpPopupMessage("Invalid password. Please make sure that password meets all the requirements.",
-                        Gravity.CENTER,
+                showSignUpPopupMessage(
+                        "Invalid password. Please make sure that password meets all the requirements.",
                         Color.parseColor("#eea29e"));
             }
         }
@@ -124,7 +120,6 @@ public class SignUpActivity extends AppCompatActivity {
                         "\t* contain at least 1 lowercase letter\n" +
                         "\t* contain at least 1 digit\n" +
                         "\t* be a minimum of 6 characters in length",
-                Gravity.NO_GRAVITY,
                 Color.parseColor("#eea29e"));
     }
 
@@ -184,9 +179,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private boolean isPasswordValid(String password) {
-        // Check if the password meets the requirements
-        boolean hasUppercase = false;
-        boolean hasLowercase = false;
+        boolean hasUppercaseLetter = false;
+        boolean hasLowercaseLetter = false;
         boolean hasDigit = false;
 
         if (password.length() < 6) {
@@ -195,25 +189,25 @@ public class SignUpActivity extends AppCompatActivity {
 
         for (char c : password.toCharArray()) {
             if (Character.isUpperCase(c)) {
-                hasUppercase = true;
+                hasUppercaseLetter = true;
             } else if (Character.isLowerCase(c)) {
-                hasLowercase = true;
+                hasLowercaseLetter = true;
             } else if (Character.isDigit(c)) {
                 hasDigit = true;
             }
         }
 
-        return hasUppercase && hasLowercase && hasDigit;
+        return hasUppercaseLetter && hasLowercaseLetter && hasDigit;
     }
 
 
-    private void showSignUpPopupMessage(String textMessage, int gravity, int backgroundColor) {
+    private void showSignUpPopupMessage(String textMessage, int backgroundColor) {
         Toast popupMessage = Toast.makeText(this, textMessage, Toast.LENGTH_LONG);
 
         View popupMessageView = popupMessage.getView();
         popupMessageView.setBackgroundColor(backgroundColor);
 
-        popupMessage.setGravity(gravity, 0, 0);
+        popupMessage.setGravity(Gravity.CENTER, 0, 0);
         popupMessage.show();
     }
 
