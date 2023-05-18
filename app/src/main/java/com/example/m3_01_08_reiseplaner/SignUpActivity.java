@@ -51,14 +51,37 @@ public class SignUpActivity extends AppCompatActivity {
         String password = ((EditText) findViewById(R.id.SignupPasswordEditText)).getText().toString();
         String confirmPassword = ((EditText) findViewById(R.id.SignupConfirmPasswordEditText)).getText().toString();
 
-        if (firstName.isEmpty())
-            showSignUpPopupMessage("Please enter a name!", Gravity.CENTER, Color.parseColor("#eea29e"));
-        else if (lastName.isEmpty())
-            showSignUpPopupMessage("Please enter a surname!", Gravity.CENTER, Color.parseColor("#eea29e"));
-        else if (email.isEmpty())
-            showSignUpPopupMessage("Please enter an email!", Gravity.CENTER, Color.parseColor("#eea29e"));
-        else if (password.isEmpty())
-            showSignUpPopupMessage("Please enter a password!", Gravity.CENTER, Color.parseColor("#eea29e"));
+        if (firstName.isEmpty()) {
+            showSignUpPopupMessage(
+                    "Please enter a name!",
+                    Gravity.CENTER,
+                    Color.parseColor(
+                            "#eea29e"));
+        }
+        else if (lastName.isEmpty()) {
+            showSignUpPopupMessage(
+                    "Please enter a surname!",
+                    Gravity.CENTER,
+                    Color.parseColor("#eea29e"));
+        }
+        else if (email.isEmpty()) {
+            showSignUpPopupMessage(
+                    "Please enter an email!",
+                    Gravity.CENTER,
+                    Color.parseColor("#eea29e"));
+        }
+        else if (password.isEmpty()) {
+            showSignUpPopupMessage(
+                    "Please enter a password!",
+                    Gravity.CENTER,
+                    Color.parseColor("#eea29e"));
+        }
+        else if (isUserEmailPresent(email)) {
+            showSignUpPopupMessage(
+                    "User with this email has been already registered. Please use another email.",
+                    Gravity.CENTER,
+                    Color.parseColor("#eea29e"));
+        }
         else {
             if (isPasswordValid(password)) {
                 if (password.equals(confirmPassword)) {
@@ -103,6 +126,14 @@ public class SignUpActivity extends AppCompatActivity {
                         "\t* be a minimum of 6 characters in length",
                 Gravity.NO_GRAVITY,
                 Color.parseColor("#eea29e"));
+    }
+
+    private boolean isUserEmailPresent(String email) {
+        for (User user : userList) {
+            if (user.getEmail().equals(email))
+                return true;
+        }
+        return false;
     }
 
     // Function to read countries.json file
