@@ -8,8 +8,18 @@
     tools:context=".MainMenuActivity" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="412dp"
+        android:layout_height="652dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBarConstraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBarConstraintLayout">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomBarConstraintLayout"
-        android:layout_width="417dp"
+        android:layout_width="412dp"
         android:layout_height="103dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,28 +27,26 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar2"
-            android:layout_width="418dp"
-            android:layout_height="108dp"
-            android:background="?attr/colorPrimary"
+            android:layout_width="412dp"
+            android:layout_height="101dp"
+            android:background="#518997"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/helpButton"
             android:layout_width="80dp"
             android:layout_height="56dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
             android:background="#00FFFFFF"
+            android:contentDescription="helpButton"
             android:scaleType="fitCenter"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/toolbar2"
-            app:layout_constraintVertical_bias="0.392"
             app:srcCompat="@drawable/ic_information" />
 
         <TextView
@@ -50,20 +58,21 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton2"
-            app:layout_constraintStart_toStartOf="@+id/imageButton2"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+            app:layout_constraintEnd_toEndOf="@+id/helpButton"
+            app:layout_constraintStart_toStartOf="@+id/helpButton"
+            app:layout_constraintTop_toBottomOf="@+id/helpButton" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="80dp"
-            android:layout_height="56dp"
+            android:id="@+id/settingsButton"
+            android:layout_width="82dp"
+            android:layout_height="61dp"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="24dp"
             android:background="#00FFFFFF"
+            android:contentDescription="settingsButton"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/toolbar2"
+            app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/ic_settings" />
 
         <TextView
@@ -75,24 +84,45 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton3"
-            app:layout_constraintStart_toStartOf="@+id/imageButton3"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+            app:layout_constraintEnd_toEndOf="@+id/settingsButton"
+            app:layout_constraintStart_toStartOf="@+id/settingsButton"
+            app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
+
+        <Button
+            android:id="@+id/newTravelButton"
+            android:layout_width="185dp"
+            android:layout_height="99dp"
+            android:backgroundTint="#094AB1"
+            android:fontFamily="sans-serif-medium"
+            android:text="New Travel"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColorHighlight="#9E4C4C"
+            android:textColorLink="#C86767"
+            android:textSize="32sp"
+            app:iconTint="#C37D7D"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/helpButton"
+            app:layout_constraintHorizontal_bias="0.437"
+            app:layout_constraintStart_toEndOf="@+id/settingsButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.222" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBarConstraintLayout"
-        android:layout_width="410dp"
-        android:layout_height="122dp"
+        android:layout_width="412dp"
+        android:layout_height="124dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="409dp"
-            android:layout_height="85dp"
+            android:layout_width="410dp"
+            android:layout_height="84dp"
             android:background="#A1CCED"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
@@ -127,8 +157,10 @@
 
         <TextView
             android:id="@+id/textView8"
-            android:layout_width="157dp"
-            android:layout_height="36dp"
+            android:layout_width="155dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="sans-serif-medium"
             android:text="Planned Travels:"
             android:textSize="20sp"
