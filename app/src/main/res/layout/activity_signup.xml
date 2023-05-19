@@ -99,14 +99,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:drawableLeft="@drawable/calender_icon"
+        android:layout_marginEnd="39dp"
+        android:width="280dp"
         android:ems="14"
-        android:hint=" Date of Birth"
+        android:hint="Date of Birth (DD.MM.YYYY)"
         android:inputType="date"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LastNameEditText" />
 
     <EditText
@@ -250,5 +249,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SignupEmailEditText"
         app:srcCompat="@drawable/ic_information" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="17dp"
+        android:clickable="true"
+        android:onClick="pickDateOfBirth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LastNameEditText"
+        app:srcCompat="@drawable/calender_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
