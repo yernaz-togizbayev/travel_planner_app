@@ -32,13 +32,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The SignUpActivity class is responsible for handling user sign-up functionality.
+ * It allows users to enter their personal information, validate the input values,
+ * create a new user account, and navigate to the sign-in screen.
+ */
 public class SignUpActivity extends AppCompatActivity {
-    private Spinner countryDropDown;
-    private static final List<User> userList = new ArrayList<>();
-    private static final String INTENT_KEY_CALENDAR = "CalendarKey";
+    private Spinner countryDropDown; // drop-down menu for selecting the country
+    private static final List<User> userList = new ArrayList<>(); // list of registered users
+    private static final String INTENT_KEY_CALENDAR = "CalendarKey"; // key for passing calendar data
+    private ActivityResultLauncher<Intent> calendarLauncher; // launcher for handling calendar activity
 
-    private ActivityResultLauncher<Intent> calendarLauncher;
-
+    /**
+     * Initialization of SignUpActivity and setting up the view of a content
+     * @param savedInstanceState State of saved instance.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,11 +58,17 @@ public class SignUpActivity extends AppCompatActivity {
         initializeCalendarLauncher();
     }
 
-    public void SignUpGoBackPress(View view) {
-        Intent intent = new Intent(SignUpActivity.this, StartScreenActivity.class);
-        startActivity(intent);
-    }
-
+    /**
+     * This method handles the button press event for the sign-up button. It fetches the user input
+     * values from various fields. It performs validation checks on the input values, such as
+     * "empty name input", "empty surname input","empty email input", "email duplicates", "password
+     * empty input", whether password and password confirmation are match and whether password
+     * requirements are succeeded. In case if any of these validation checks fails, appropriate
+     * error messages will appear. If all validations pass, a new User object with the provided
+     * information will be created, added to the user list, then success message is displayed, and
+     * the user is navigated to the SignIn screen.
+     * @param view The button that was pressed by the user.
+     */
     public void SignUpButtonPress(View view) {
         String firstName = ((EditText) findViewById(R.id.FirstNameEditText)).getText().toString();
         String lastName = ((EditText) findViewById(R.id.LastNameEditText)).getText().toString();
@@ -126,10 +140,26 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Handles the button press to go back from the sign up screen to the start screen.
+     * @param view The button that was pressed by the user.
+     */
+    public void SignUpGoBackPress(View view) {
+        Intent intent = new Intent(SignUpActivity.this, StartScreenActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Initialization of the calendarLauncher for handling results of CalendarActivity.
+     */
     private void initializeCalendarLauncher() {
         calendarLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), this::handleCalendarResult);
     }
 
+    /**
+     * Handles the result from the CalendarActivity.
+     * @param result Activity result which contains selected date.
+     */
     private void handleCalendarResult(ActivityResult result) {
         if (result != null && result.getResultCode() == RESULT_OK) {
             Intent data = result.getData();
@@ -139,6 +169,11 @@ public class SignUpActivity extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     * Sets the date of birth based on the chosenDate.
+     * @param chosenDate The chosen date of birth.
+     */
     private void setDateOfBirth(LocalDate chosenDate) {
         // Format the chosen date as "dd.MM.yyyy"
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -149,11 +184,21 @@ public class SignUpActivity extends AppCompatActivity {
         dateOfBirthTextView.setText(formattedDate);
     }
 
-    public void pickDateOfBirth(View view) {
+    /**
+     * Handles pressing of button to open the CalendarActivity for selecting the date of birth.
+     * @param view The icon that was clicked by the user.
+     */
+    public void dateOfBirthCalenderIconPress(View view) {
         Intent intent = new Intent(SignUpActivity.this, CalendarActivity.class);
         calendarLauncher.launch(intent);
     }
 
+
+    /**
+     * This method is called when the user presses the password requirements icon.
+     * It displays a popup message with the password requirements to guide the user.
+     * @param view The icon that was pressed by the user.
+     */
     public void passwordRequirementsIconPress(View view) {
         showSignUpPopupMessage( "Password must:\n" +
                         "\t* contain at least 1 uppercase letter\n" +
@@ -163,6 +208,12 @@ public class SignUpActivity extends AppCompatActivity {
                 Color.parseColor("#eea29e"));
     }
 
+    /**
+     * Checks if user with entered email already has been registered or not.
+     * (if a user email is present in the user list)
+     * @param email The email to check for.
+     * @return True if the email is found in the user list, false otherwise.
+     */
     private boolean isUserEmailPresent(String email) {
         for (User user : userList) {
             if (user.getEmail().equals(email))
@@ -171,7 +222,12 @@ public class SignUpActivity extends AppCompatActivity {
         return false;
     }
 
-    // Function to read countries.json file
+    /**
+     * Reads the contents of a JSON file from an input stream and returns it as a string.
+     * @param inputStream The input stream which represents the JSON file.
+     * @return The contents of the JSON file as a string.
+     * @throws IOException if an error occurs while reading the JSON file.
+     */
     @NonNull
     private String readJsonFile(InputStream inputStream) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
@@ -186,7 +242,9 @@ public class SignUpActivity extends AppCompatActivity {
         return stringBuilder.toString();
     }
 
-    // Extract all countries from json file and add to spinner
+    /**
+     * Extract all countries from JSON file and sets up drop-down menu alphabetically.
+     */
     private void setCountriesDropDownMenu() {
         try {
             List<String> listOfCountries = new ArrayList<>();
@@ -214,10 +272,20 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Gets a list of users.
+     * @return The list of users.
+     */
     public static List<User> getUserList() {
         return userList;
     }
 
+    /**
+     * Function to check if a password is valid. It checks that the password
+     * has at least 1 uppercase letter, 1 lowercase letter und 1 digit.
+     * @param password The password to validate.
+     * @return True if the password is valid, false otherwise.
+     */
     private boolean isPasswordValid(String password) {
         boolean hasUppercaseLetter = false;
         boolean hasLowercaseLetter = false;
@@ -240,7 +308,11 @@ public class SignUpActivity extends AppCompatActivity {
         return hasUppercaseLetter && hasLowercaseLetter && hasDigit;
     }
 
-
+    /**
+     * Function to display a popup message with text and background color.
+     * @param textMessage The text to display in the popup message.
+     * @param backgroundColor The background color of the popup message.
+     */
     private void showSignUpPopupMessage(String textMessage, int backgroundColor) {
         Toast popupMessage = Toast.makeText(this, textMessage, Toast.LENGTH_LONG);
 
