@@ -14,7 +14,7 @@ public class User {
     private final String zip;
     private final String country;
     private final String email;
-    private final String password;
+    private String password;
 
     /**
      * Constructor  of a new User object with the provided personal information.
@@ -67,4 +67,6 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+    public void setPassword(String password) { this.password = password; }
 }
