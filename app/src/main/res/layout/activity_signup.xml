@@ -257,7 +257,7 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="17dp"
         android:clickable="true"
-        android:onClick="pickDateOfBirth"
+        android:onClick="dateOfBirthCalenderIconPress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LastNameEditText"
         app:srcCompat="@drawable/calender_icon" />
