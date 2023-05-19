@@ -90,8 +90,9 @@
 
         <Button
             android:id="@+id/newTravelButton"
-            android:layout_width="185dp"
-            android:layout_height="99dp"
+            android:layout_width="182dp"
+            android:layout_height="93dp"
+            android:layout_marginBottom="4dp"
             android:backgroundTint="#094AB1"
             android:fontFamily="sans-serif-medium"
             android:onClick="newTravelButtonPress"
@@ -104,10 +105,10 @@
             app:iconTint="#C37D7D"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/helpButton"
-            app:layout_constraintHorizontal_bias="0.437"
+            app:layout_constraintHorizontal_bias="0.472"
             app:layout_constraintStart_toEndOf="@+id/settingsButton"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.222" />
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
