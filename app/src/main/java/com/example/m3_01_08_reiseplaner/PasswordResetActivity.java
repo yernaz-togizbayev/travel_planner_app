@@ -3,6 +3,7 @@ package com.example.m3_01_08_reiseplaner;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -49,6 +50,15 @@ public class PasswordResetActivity extends AppCompatActivity {
                     "User not found",
                     Color.parseColor("#eea29e"));
         }
+    }
+
+    /**
+     * Handles the button press to go back from the password reset screen to the sign in screen.
+     * @param view The button that was pressed by the user.
+     */
+    public void PasswordResetGoBackPress(View view) {
+        Intent intent = new Intent(PasswordResetActivity.this, SignInActivity.class);
+        startActivity(intent);
     }
 
     /**
