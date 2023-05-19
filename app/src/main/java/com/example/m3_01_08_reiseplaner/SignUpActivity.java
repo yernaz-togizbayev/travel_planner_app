@@ -1,5 +1,8 @@
 package com.example.m3_01_08_reiseplaner;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -22,6 +26,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,6 +35,10 @@ import java.util.List;
 public class SignUpActivity extends AppCompatActivity {
     private Spinner countryDropDown;
     private static final List<User> userList = new ArrayList<>();
+    private static final String INTENT_KEY_CALENDAR = "CalendarKey";
+
+    private ActivityResultLauncher<Intent> calendarLauncher;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +46,13 @@ public class SignUpActivity extends AppCompatActivity {
 
         countryDropDown = findViewById(R.id.CountryDropDown);
         setCountriesDropDownMenu();
+
+        initializeCalendarLauncher();
+    }
+
+    public void SignUpGoBackPress(View view) {
+        Intent intent = new Intent(SignUpActivity.this, StartScreenActivity.class);
+        startActivity(intent);
     }
 
     public void SignUpButtonPress(View view) {
@@ -109,9 +126,32 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-    public void SignUpGoBackPress(View view) {
-        Intent intent = new Intent(SignUpActivity.this, StartScreenActivity.class);
-        startActivity(intent);
+    private void initializeCalendarLauncher() {
+        calendarLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), this::handleCalendarResult);
+    }
+
+    private void handleCalendarResult(ActivityResult result) {
+        if (result != null && result.getResultCode() == RESULT_OK) {
+            Intent data = result.getData();
+            if (data != null) {
+                LocalDate chosenDate = (LocalDate) data.getSerializableExtra(INTENT_KEY_CALENDAR);
+                setDateOfBirth(chosenDate);
+            }
+        }
+    }
+    private void setDateOfBirth(LocalDate chosenDate) {
+        // Format the chosen date as "dd.MM.yyyy"
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        String formattedDate = chosenDate.format(formatter);
+
+        // Set the chosen date to the DateOfBirthTextView
+        TextView dateOfBirthTextView = findViewById(R.id.DateOfBirthEditText);
+        dateOfBirthTextView.setText(formattedDate);
+    }
+
+    public void pickDateOfBirth(View view) {
+        Intent intent = new Intent(SignUpActivity.this, CalendarActivity.class);
+        calendarLauncher.launch(intent);
     }
 
     public void passwordRequirementsIconPress(View view) {
