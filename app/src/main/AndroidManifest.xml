@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,6 +15,9 @@
         android:theme="@style/Theme.M3_01_08_Reiseplaner"
         tools:targetApi="31">
         <activity
+            android:name=".PasswordResetActivity"
+            android:exported="false" />
+        <activity
             android:name=".CalendarActivity"
             android:exported="false" />
         <activity
@@ -24,10 +28,10 @@
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".SignInActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".StartScreenActivity"
             android:exported="true">
