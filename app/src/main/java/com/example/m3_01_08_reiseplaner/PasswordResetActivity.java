@@ -11,11 +11,21 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * The PasswordResetActivity class is responsible for handling the password reset functionality.
+ * It allows users to reset their password by providing their email, new password, and confirming
+ * the new password. If the user's email is found in the user list and the new password meets the
+ * requirements, the password is reset. Otherwise, appropriate error messages are displayed.
+ */
 public class PasswordResetActivity extends AppCompatActivity {
     private EditText passwordResetEmailEditText;
     private EditText newPasswordEditText;
     private EditText confirmNewPasswordEditText;
 
+    /**
+     * Initialization of PasswordResetActivity and setting up the view of a content.
+     * @param savedInstanceState State of saved instance.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +36,14 @@ public class PasswordResetActivity extends AppCompatActivity {
         confirmNewPasswordEditText = findViewById(R.id.ConfirmNewPasswordEditText);
     }
 
+    /**
+     * Handles the button press event for resetting the password. It first checks whether user
+     * with this email exist. In case not exist, it will show popup message that email is  invalid,
+     * otherwise it checks for password validation and match of new password and confirmation of a
+     * new password. If check succeeded, the new password will be set up and screen will be switched
+     * back to sign-in screen, otherwise appropriate message will be displayed.
+     * @param view The button that was pressed by the user.
+     */
     public void resetPasswordButtonPress(View view) {
         String email = passwordResetEmailEditText.getText().toString();
         String newPassword = newPasswordEditText.getText().toString();
