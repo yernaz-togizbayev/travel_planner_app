@@ -34,15 +34,21 @@ public class PasswordResetActivity extends AppCompatActivity {
         User user = findUserByEmail(email);
 
         if (user != null) {
-            if (!newPassword.isEmpty() && newPassword.equals(confirmNewPassword)) {
-                user.setPassword(newPassword);
-                showPasswordResetPopupMessage(
-                        "Password successfully reset",
-                        Color.parseColor("#a4e8c0"));
-                finish();
+            if (isPasswordValid(newPassword)) {
+                if (newPassword.equals(confirmNewPassword)) {
+                    user.setPassword(newPassword);
+                    showPasswordResetPopupMessage(
+                            "Password successfully reset",
+                            Color.parseColor("#a4e8c0"));
+                    finish();
+                } else {
+                    showPasswordResetPopupMessage(
+                            "Passwords do not match. Please try again",
+                            Color.parseColor("#eea29e"));
+                }
             } else {
                 showPasswordResetPopupMessage(
-                        "Passwords do not match. Please try again",
+                        "Invalid password. Please press info button to check for the requirements.",
                         Color.parseColor("#eea29e"));
             }
         } else {
@@ -73,6 +79,34 @@ public class PasswordResetActivity extends AppCompatActivity {
                         "\t* contain at least 1 digit\n" +
                         "\t* be a minimum of 6 characters in length",
                 Color.parseColor("#eea29e"));
+    }
+
+    /**
+     * Function to check if a password is valid. It checks that the password
+     * has at least 1 uppercase letter, 1 lowercase letter und 1 digit.
+     * @param password The password to validate.
+     * @return True if the password is valid, false otherwise.
+     */
+    private boolean isPasswordValid(String password) {
+        boolean hasUppercaseLetter = false;
+        boolean hasLowercaseLetter = false;
+        boolean hasDigit = false;
+
+        if (password.length() < 6) {
+            return false;
+        }
+
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                hasUppercaseLetter = true;
+            } else if (Character.isLowerCase(c)) {
+                hasLowercaseLetter = true;
+            } else if (Character.isDigit(c)) {
+                hasDigit = true;
+            }
+        }
+
+        return hasUppercaseLetter && hasLowercaseLetter && hasDigit;
     }
 
     /**
