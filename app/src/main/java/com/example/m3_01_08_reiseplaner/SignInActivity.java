@@ -19,7 +19,7 @@ import android.widget.Toast;
 public class SignInActivity extends AppCompatActivity {
 
     /**
-     * Initialization of SignInActivity and setting up the view of a content
+     * Initialization of SignInActivity and setting up the view of a content.
      * @param savedInstanceState State of saved instance.
      */
     @Override
