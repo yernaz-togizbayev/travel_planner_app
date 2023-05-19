@@ -62,6 +62,20 @@ public class PasswordResetActivity extends AppCompatActivity {
     }
 
     /**
+     * This method is called when the user presses the password requirements icon.
+     * It displays a popup message with the password requirements to guide the user.
+     * @param view The icon that was pressed by the user.
+     */
+    public void passwordRequirementsIconPress(View view) {
+        showPasswordResetPopupMessage( "Password must:\n" +
+                        "\t* contain at least 1 uppercase letter\n" +
+                        "\t* contain at least 1 lowercase letter\n" +
+                        "\t* contain at least 1 digit\n" +
+                        "\t* be a minimum of 6 characters in length",
+                Color.parseColor("#eea29e"));
+    }
+
+    /**
      * Finds a user with the specified email in the user list.
      * @param email The email to search for.
      * @return User object if found in list of users, null otherwise.
