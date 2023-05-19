@@ -37,6 +37,11 @@ public class SignInActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void ForgotPasswordPress(View view) {
+        Intent intent = new Intent(SignInActivity.this, PasswordResetActivity.class);
+        startActivity(intent);
+    }
+
     /**
      * This method handles the button press event for the sign-in button. It performs validation
      * check whether email address and password are match. In case email could not be found in the
