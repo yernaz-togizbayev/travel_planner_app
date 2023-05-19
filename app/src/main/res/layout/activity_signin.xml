@@ -25,7 +25,7 @@
         android:id="@+id/divider"
         android:layout_width="380dp"
         android:layout_height="1dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="220dp"
         android:background="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -67,10 +67,10 @@
         android:id="@+id/SignInButton"
         android:layout_width="333dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="45dp"
         android:backgroundTint="#155FD4"
         android:fontFamily="sans-serif-medium"
-        android:onClick="SignInButtonPress"
+        android:onClick="ForgotPasswordPress"
         android:text="SIGN IN"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,5 +93,20 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ForgotPasswordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-5dp"
+        android:layout_marginEnd="42dp"
+        android:clickable="true"
+        android:onClick="ForgotPasswordPress"
+        android:text="[FORGOT PASSWORD?]"
+        android:textColor="#155FD4"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SigninPasswordEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
