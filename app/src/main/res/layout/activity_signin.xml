@@ -70,7 +70,7 @@
         android:layout_marginTop="45dp"
         android:backgroundTint="#155FD4"
         android:fontFamily="sans-serif-medium"
-        android:onClick="ForgotPasswordPress"
+        android:onClick="SignInButtonPress"
         android:text="SIGN IN"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
