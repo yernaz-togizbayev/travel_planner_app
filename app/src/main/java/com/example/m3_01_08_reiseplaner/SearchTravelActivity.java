@@ -9,12 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.m3_01_08_reiseplaner.converter.LocalDateConverter;
+import com.example.m3_01_08_reiseplaner.spinnerInputs.CountryList;
 
 import java.io.InputStream;
 import java.time.LocalDate;
+import java.util.List;
 
 public class SearchTravelActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_CALENDAR_DATE= 1001;
@@ -25,6 +29,18 @@ public class SearchTravelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_travel);
+        fillTheSpinners();
+    }
+
+
+    private void fillTheSpinners(){
+        List<String> listOfCountries = CountryList.getCountryLists(this);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listOfCountries);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner depatureCountryDropdown = findViewById(R.id.depatureSpinner);
+        Spinner travelCountryDropdown = findViewById(R.id.travelDestinationSpinner);
+        depatureCountryDropdown.setAdapter(adapter);
+        travelCountryDropdown.setAdapter(adapter);
     }
 
     /**
