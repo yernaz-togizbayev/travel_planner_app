@@ -6,7 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+/**
+ * Represents a start screen of EasyTravel application.
+ */
 public class StartScreenActivity extends AppCompatActivity {
+    /**
+     * Initialization of StartScreenActivity and setting up the view of a content
+     * @param savedInstanceState State of saved instance.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //If you see this, your pull was successful
@@ -60,14 +67,14 @@ public class StartScreenActivity extends AppCompatActivity {
         SignUpActivity.getUserList().add(ErikaMustermann);
         SignUpActivity.getUserList().add(JohnDoe);
 
-        // Navigates to "SignInActivity" by clicking "Sign In" TextView
+        // Navigates to Sign In screen when "Sign In" text clicked
         TextView SignInText = findViewById(R.id.SignInText);
         SignInText.setOnClickListener(view -> {
             Intent intent = new Intent(StartScreenActivity.this, SignInActivity.class);
             startActivity(intent);
         });
 
-        // Navigates to "SignUpActivity" by clicking "Sign Up" TextView
+        // Navigates to Sign Up screen when "Sign Up" tet clicked
         TextView SignUpText = findViewById(R.id.SignUpText);
         SignUpText.setOnClickListener(view -> {
             Intent intent = new Intent(StartScreenActivity.this, SignUpActivity.class);
