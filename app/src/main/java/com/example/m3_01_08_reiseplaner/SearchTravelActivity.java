@@ -120,4 +120,9 @@ public class SearchTravelActivity extends AppCompatActivity {
         Intent departureDateCalendarIntent = new Intent(this, CalendarActivity.class);
         setReturnDateResult.launch(departureDateCalendarIntent);
     }
+
+    public void onTravelSearchButtonPress(View view){
+        Intent newTravelIntent = new Intent(this, TravelRecommendationActivity.class);
+        startActivity(newTravelIntent);
+    }
 }

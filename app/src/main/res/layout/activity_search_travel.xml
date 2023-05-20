@@ -215,6 +215,7 @@
         android:layout_width="274dp"
         android:layout_height="125dp"
         android:layout_marginTop="24dp"
+        android:onClick="onTravelSearchButtonPress"
         android:text="Search for Travel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
