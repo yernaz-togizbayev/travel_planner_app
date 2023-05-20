@@ -191,10 +191,10 @@ public class SearchTravelActivity extends AppCompatActivity {
         RadioButton ecoButton = findViewById(R.id.ecoRadioButton);
         RadioButton fastButton = findViewById(R.id.fastRadioButton);
 
-        if(ecoButton.isSelected()){
+        if(ecoButton.isChecked()){
             return ETravelPreference.ECOLOGICALLY;
         }
-        if(fastButton.isSelected()){
+        if(fastButton.isChecked()){
             return  ETravelPreference.FAST;
         }
         return ETravelPreference.CHEAP;

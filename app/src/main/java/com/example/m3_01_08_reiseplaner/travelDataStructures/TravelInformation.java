@@ -1,5 +1,6 @@
 package com.example.m3_01_08_reiseplaner.travelDataStructures;
 
+import com.example.m3_01_08_reiseplaner.converter.LocalDateConverter;
 import com.example.m3_01_08_reiseplaner.enums.ETravelPreference;
 
 import java.io.Serializable;
@@ -44,8 +45,16 @@ public class TravelInformation implements Serializable {
         return startDate;
     }
 
+    public String getStartDateAsString(){
+        return LocalDateConverter.localDateToString(startDate);
+    }
+
     public LocalDate getBackTravelDate() {
         return backTravelDate;
+    }
+
+    public String getBackTravelDateAsString(){
+        return LocalDateConverter.localDateToString(backTravelDate);
     }
 
     public ETravelPreference getPreference() {
