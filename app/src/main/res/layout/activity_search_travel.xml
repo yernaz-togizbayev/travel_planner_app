@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText7"
+        android:id="@+id/travelDestinationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView15">
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/ecoRadioButton"
             android:layout_width="143dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
@@ -67,7 +67,7 @@
             android:textSize="20sp" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/fastRadioButton"
             android:layout_width="139dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
@@ -76,7 +76,7 @@
             android:textSize="20sp" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/cheapRadioButton"
             android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -122,7 +122,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/editTextText5"
+        android:id="@+id/depatureCityText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -138,7 +138,7 @@
         android:layout_height="53dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
+        app:layout_constraintTop_toBottomOf="@+id/depatureCityText" />
 
     <EditText
         android:id="@+id/departureDateText"
@@ -157,10 +157,10 @@
         android:layout_width="wrap_content"
         android:layout_height="53dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText7"
+        app:layout_constraintEnd_toEndOf="@+id/travelDestinationText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextText7"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText7" />
+        app:layout_constraintStart_toStartOf="@+id/travelDestinationText"
+        app:layout_constraintTop_toBottomOf="@+id/travelDestinationText" />
 
     <ImageButton
         android:id="@+id/departureDateButton"
