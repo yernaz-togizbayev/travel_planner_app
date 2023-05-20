@@ -11,12 +11,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.m3_01_08_reiseplaner.converter.LocalDateConverter;
+import com.example.m3_01_08_reiseplaner.enums.ETravelPreference;
 import com.example.m3_01_08_reiseplaner.spinnerInputs.CountryList;
+import com.example.m3_01_08_reiseplaner.travelDataStructures.TravelInformation;
 
 import java.io.InputStream;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,6 +30,8 @@ public class SearchTravelActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_CALENDAR_DATE= 1001;
 
     private static final String INTENT_KEY_CALENDER = "CalendarKey";
+
+    private static final String INTENT_KEY_TRAVELINFORMATION = "TravelInformation";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +130,73 @@ public class SearchTravelActivity extends AppCompatActivity {
     }
 
     public void onTravelSearchButtonPress(View view){
-        Intent newTravelIntent = new Intent(this, TravelRecommendationActivity.class);
-        startActivity(newTravelIntent);
+
+        try {
+            TravelInformation selectedTravelInformation = setTravelInformation();
+
+            Intent newTravelIntent = new Intent(this, TravelRecommendationActivity.class);
+            newTravelIntent.putExtra(INTENT_KEY_TRAVELINFORMATION, selectedTravelInformation);
+            startActivity(newTravelIntent);
+        }
+        catch (DateTimeException e){
+            Toast.makeText(this, "Please use the dd.MM.yyyy Date Format!", Toast.LENGTH_LONG).show();
+        }
+
+
+    }
+
+    /**
+     * Returns a Datastructure with all the given Information
+     * @return
+     * @throws DateTimeException
+     */
+    private TravelInformation setTravelInformation() throws DateTimeException {
+        EditText depatureCityText = findViewById(R.id.depatureCityText);
+        Spinner depatureCountrySpinner = findViewById(R.id.depatureSpinner);
+        EditText travelDestinationCityText = findViewById(R.id.travelDestinationText);
+        Spinner travelDestinationCountrySpinner = findViewById(R.id.travelDestinationSpinner);
+        EditText depatureDateText = findViewById(R.id.departureDateText);
+        EditText returnDateText = findViewById(R.id.returnDateText);
+
+        String depatureCity = depatureCityText.getText().toString();
+        String depatureCountry = (String) depatureCountrySpinner.getSelectedItem();
+        String travelDestinationCity = travelDestinationCityText.getText().toString();
+        String travelDestinationCountry = (String) travelDestinationCountrySpinner.getSelectedItem();
+
+        String depatureDateString = depatureDateText.getText().toString();
+        String returnDateString = returnDateText.getText().toString();
+
+        LocalDate depatureDate = LocalDateConverter.convertStringToLocalDate(depatureDateString);
+        LocalDate returnDate = LocalDateConverter.convertStringToLocalDate(returnDateString);
+        ETravelPreference chosenPreference = selectTravelPreference();
+
+        TravelInformation chosenTravelInformation = new TravelInformation(
+                depatureCity,
+                depatureCountry,
+                travelDestinationCity,
+                travelDestinationCountry,
+                depatureDate,
+                returnDate,
+                chosenPreference
+                );
+
+        return  chosenTravelInformation;
+    }
+
+    /**
+     * Returns the Travel Preference Enum that was chosen in RadioButtonGroup
+     * @return
+     */
+    private ETravelPreference selectTravelPreference(){
+        RadioButton ecoButton = findViewById(R.id.ecoRadioButton);
+        RadioButton fastButton = findViewById(R.id.fastRadioButton);
+
+        if(ecoButton.isSelected()){
+            return ETravelPreference.ECOLOGICALLY;
+        }
+        if(fastButton.isSelected()){
+            return  ETravelPreference.FAST;
+        }
+        return ETravelPreference.CHEAP;
     }
 }

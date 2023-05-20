@@ -1,8 +1,26 @@
 package com.example.m3_01_08_reiseplaner.converter;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class LocalDateConverter {
+
+    private static final String DATE_FORMAT = "dd.MM.yyyy";
+
+    /**
+     * Takes a String in Date Format and Converts it to a LocalDate
+     * @param dateString
+     * @return
+     * @throws DateTimeException
+     */
+    public static LocalDate convertStringToLocalDate(String dateString) throws  DateTimeException{
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
+        LocalDate date = LocalDate.parse(dateString, formatter);
+
+        return date;
+    }
 
     /**
      * Converts a LocalDate into a String in Format "dd.MM.yyyy"
