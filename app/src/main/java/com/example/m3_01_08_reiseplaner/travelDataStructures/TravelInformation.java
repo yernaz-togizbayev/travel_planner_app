@@ -6,6 +6,9 @@ import com.example.m3_01_08_reiseplaner.enums.ETravelPreference;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+/**
+ * Stores Information about what the users wants from its travl
+ */
 public class TravelInformation implements Serializable {
     private String startCity;
     private String startCountry;
@@ -59,5 +62,18 @@ public class TravelInformation implements Serializable {
 
     public ETravelPreference getPreference() {
         return preference;
+    }
+
+    @Override
+    public String toString() {
+        return "TravelInformation{" +
+                "startCity='" + startCity + '\'' +
+                ", startCountry='" + startCountry + '\'' +
+                ", destinationCity='" + destinationCity + '\'' +
+                ", destinationCountry='" + destinationCountry + '\'' +
+                ", startDate=" + startDate +
+                ", backTravelDate=" + backTravelDate +
+                ", preference=" + preference +
+                '}';
     }
 }
