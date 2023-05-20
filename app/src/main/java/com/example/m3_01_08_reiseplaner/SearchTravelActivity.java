@@ -41,6 +41,9 @@ public class SearchTravelActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Fills both spinners with countryData.
+     */
     private void fillTheSpinners(){
         List<String> listOfCountries = CountryList.getCountryLists(this);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listOfCountries);
