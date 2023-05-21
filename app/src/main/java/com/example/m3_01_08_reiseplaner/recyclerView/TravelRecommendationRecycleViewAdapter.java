@@ -1,17 +1,21 @@
 package com.example.m3_01_08_reiseplaner.recyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.m3_01_08_reiseplaner.MainMenuActivity;
 import com.example.m3_01_08_reiseplaner.R;
+import com.example.m3_01_08_reiseplaner.TravelRecommendationActivity;
 import com.example.m3_01_08_reiseplaner.enums.ETransportation;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.TravelRecommendation;
 import com.squareup.picasso.Picasso;
@@ -22,7 +26,7 @@ import java.util.List;
 public class TravelRecommendationRecycleViewAdapter extends RecyclerView.Adapter<TravelRecommendationRecycleViewAdapter.CardDataHolder> {
 
 
-    private final String TAG = "TravelRecommendationRecycleViewAdapter";
+    private final static String TAG = "TravelRecommendationRecycleViewAdapter";
 
     private Context context;
     private List<TravelRecommendation> recommendations = new ArrayList<TravelRecommendation>();
@@ -46,7 +50,7 @@ public class TravelRecommendationRecycleViewAdapter extends RecyclerView.Adapter
     public CardDataHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.travel_recommendation_card, parent, false);
-        return new CardDataHolder(view);
+        return new CardDataHolder(view, context, recommendations);
     }
 
 
@@ -66,7 +70,7 @@ public class TravelRecommendationRecycleViewAdapter extends RecyclerView.Adapter
         holder.depatureDateView.setText(currentRecommendation.getStartDateAsString());
         holder.depatureTimeView.setText(currentRecommendation.getDepatureTimeAsString());
         holder.arrivalDateView.setText(currentRecommendation.getReturnDateAsString());
-        holder.arrivalTimeView.setText(currentRecommendation.getReturnDateAsString());
+        holder.arrivalTimeView.setText(currentRecommendation.getReturnTimeAsString());
         holder.costView.setText(currentRecommendation.getPrice());
         holder.travelDurationView.setText(currentRecommendation.getTravelTime());
 
@@ -128,11 +132,11 @@ public class TravelRecommendationRecycleViewAdapter extends RecyclerView.Adapter
 
 
 
-        TextView albumNameView;
-        TextView releaseYearView;
-        TextView typeView;
 
-        public CardDataHolder(@NonNull View travelRecommendationView) {
+
+        Button bookTravelButton;
+
+        public CardDataHolder(@NonNull View travelRecommendationView, Context context, List<TravelRecommendation> recommendations) {
             super(travelRecommendationView);
             logoView = travelRecommendationView.findViewById(R.id.logoImageView);
             symbolView = travelRecommendationView.findViewById(R.id.symbolImageView);
@@ -146,6 +150,25 @@ public class TravelRecommendationRecycleViewAdapter extends RecyclerView.Adapter
 
             costView = travelRecommendationView.findViewById(R.id.costTextView);
             travelDurationView = travelRecommendationView.findViewById(R.id.travelDurationTextView);
+
+            bookTravelButton = travelRecommendationView.findViewById(R.id.bookTravelButton);
+
+            bookTravelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if(position == RecyclerView.NO_POSITION){
+                        Log.w(TAG, "NO POSITION");
+                        return;
+                    }
+                    TravelRecommendation chosenRecommendation = recommendations.get(position);
+
+                    Log.d(TAG, chosenRecommendation.toString());
+
+                    Intent intent = new Intent(context, MainMenuActivity.class);
+                    context.startActivity(intent);
+                }
+            });
 
 
         }
