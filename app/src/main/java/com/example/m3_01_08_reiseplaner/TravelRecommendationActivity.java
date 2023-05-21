@@ -1,6 +1,8 @@
 package com.example.m3_01_08_reiseplaner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.m3_01_08_reiseplaner.enums.ETravelPreference;
 import com.example.m3_01_08_reiseplaner.mockFiller.TravelRecommandationFiller;
+import com.example.m3_01_08_reiseplaner.recyclerView.TravelRecommendationRecycleViewAdapter;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.TravelInformation;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.TravelRecommendation;
 
@@ -28,6 +31,7 @@ public class TravelRecommendationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_recommendation);
         loadActivity();
+        setUpRecyclerView();
     }
 
     /**
@@ -54,4 +58,12 @@ public class TravelRecommendationActivity extends AppCompatActivity {
 
         Log.d(TAG, recommendations.toString());
     }
+
+    private void setUpRecyclerView(){
+        RecyclerView recommendationView = findViewById(R.id.recommendationsRecyclerView);
+        TravelRecommendationRecycleViewAdapter adapter = new TravelRecommendationRecycleViewAdapter(this, recommendations);
+        recommendationView.setAdapter(adapter);
+        recommendationView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
 }
