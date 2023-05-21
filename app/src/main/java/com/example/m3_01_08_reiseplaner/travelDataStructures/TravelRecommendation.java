@@ -3,6 +3,7 @@ package com.example.m3_01_08_reiseplaner.travelDataStructures;
 import com.example.m3_01_08_reiseplaner.enums.ETransportation;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class TravelRecommendation {
     private ETransportation transportation;
@@ -41,6 +42,58 @@ public class TravelRecommendation {
         this.price = price;
 
         this.travelTime = travelTime;
+    }
+
+    public ETransportation getTransportation() {
+        return transportation;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public LocalTime getDepatureTime() {
+        return depatureTime;
+    }
+
+    public String getDepatureTimeAsString(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        String timeString = depatureTime.format(formatter);
+        return timeString;
+    }
+
+    public LocalTime getReturnTime() {
+        return returnTime;
+    }
+
+    public String getReturnTimeAsString(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        String timeString = returnTime.format(formatter);
+        return timeString;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public int getDrawableID() {
+        return drawableID;
+    }
+
+    public TravelInformation getInformation() {
+        return information;
+    }
+
+    public String getTravelTime() {
+        return travelTime;
+    }
+
+    public String getStartDateAsString(){
+        return information.getStartDateAsString();
+    }
+
+    public String getReturnDateAsString(){
+        return information.getBackTravelDateAsString();
     }
 
     @Override
