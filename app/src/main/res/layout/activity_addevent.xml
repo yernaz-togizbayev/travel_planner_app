@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:addStatesFromChildren="false"
+    android:background="#DEF0F7"
+    android:clickable="true"
+    tools:context="@tools:sample/date/ddmmyy">
+
+    <EditText
+        android:id="@+id/EventNameEditText"
+        android:layout_width="275dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="148dp"
+        android:drawableTint="#808080"
+        android:ems="14"
+        android:hint="Event Name"
+        android:inputType="text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.61"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/RegionEditText"
+        android:layout_width="143dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="484dp"
+        android:drawableTint="#808080"
+        android:ems="14"
+        android:hint="Region"
+        android:inputType="text"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/StreetEditText2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/PostalCodeEditText"
+        android:layout_width="143dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="24dp"
+        android:drawableTint="#808080"
+        android:ems="14"
+        android:hint="Postal Code"
+        android:inputType="text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TimeEditText" />
+
+    <EditText
+        android:id="@+id/StreetEditText2"
+        android:layout_width="143dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="548dp"
+        android:drawableTint="#808080"
+        android:ems="14"
+        android:hint="Street"
+        android:inputType="text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/HouseNumberEditText"
+        android:layout_width="143dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="544dp"
+        android:drawableTint="#808080"
+        android:ems="14"
+        android:hint="House Number"
+        android:inputType="text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/TimeEditText"
+        android:layout_width="147dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="420dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Time"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/DateEditText"
+        android:layout_width="141dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="Date"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/RegionEditText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/preferedIcon"
+        android:layout_width="80dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EventNameEditText"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="44dp"
+        android:clickable="true"
+        android:onClick="addEventButtonPress"
+        android:text="save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/chooseIconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="96dp"
+        android:onClick="chooseIconButtonPress"
+        android:text="choose Icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EventNameEditText" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="183dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="76dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="Add Event"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:addStatesFromChildren="false"
+    android:background="#DEF0F7"
+    android:clickable="true">
+
+
+    <TextView
+        android:id="@+id/signInGoback3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:drawableLeft="@drawable/goback_icon"
+        android:drawableTint="#155FD4"
+        android:onClick="ChooseIconGoBackPress"
+        android:text=" Go Back"
+        android:textColor="#155FD4"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="276dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="68dp"
+        android:text="Please choose an Icon!"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/Icon1"
+        android:layout_width="106dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="64dp"
+        android:clickable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:srcCompat="@drawable/museumicon" />
+
+    <ImageView
+        android:id="@+id/Icon2"
+        android:layout_width="93dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="64dp"
+        android:clickable="true"
+        app:layout_constraintStart_toEndOf="@+id/Icon1"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:srcCompat="@drawable/houseicon_small" />
+
+    <ImageView
+        android:id="@+id/Icon3"
+        android:layout_width="109dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="124dp"
+        android:clickable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Icon1"
+        app:srcCompat="@drawable/landpointicon" />
+
+    <ImageView
+        android:id="@+id/Icon4"
+        android:layout_width="74dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="84dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Icon2"
+        app:srcCompat="@drawable/eatingicon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
