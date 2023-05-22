@@ -15,10 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.m3_01_08_reiseplaner.MainMenuActivity;
 import com.example.m3_01_08_reiseplaner.R;
-import com.example.m3_01_08_reiseplaner.TravelRecommendationActivity;
 import com.example.m3_01_08_reiseplaner.enums.ETransportation;
+import com.example.m3_01_08_reiseplaner.staticDataStorer.StoredTravels;
+import com.example.m3_01_08_reiseplaner.travelDataStructures.PlannedTrip;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.TravelRecommendation;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -164,6 +164,10 @@ public class TravelRecommendationRecycleViewAdapter extends RecyclerView.Adapter
                     TravelRecommendation chosenRecommendation = recommendations.get(position);
 
                     Log.d(TAG, chosenRecommendation.toString());
+
+                    PlannedTrip chosenTrip = new PlannedTrip(chosenRecommendation);
+
+                    StoredTravels.addTrip(chosenTrip);
 
                     Intent intent = new Intent(context, MainMenuActivity.class);
                     context.startActivity(intent);
