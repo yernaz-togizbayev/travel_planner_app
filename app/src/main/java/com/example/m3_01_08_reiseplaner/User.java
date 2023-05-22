@@ -1,19 +1,34 @@
 package com.example.m3_01_08_reiseplaner;
 
+/**
+ * Representation of a user with various personal information, such as name, surname,
+ * date of birth, street, house number, city, zip code, country, email and password.
+ */
 public class User {
-    private String firstName;
-    private String lastName;
-    private String dateOfBirth;
-    private String street;
-    private String houseNumber;
-    private String city;
-    private String zip;
-    private String country;
-    private String email;
+    private final String firstName;
+    private final String lastName;
+    private final String dateOfBirth;
+    private final String street;
+    private final String houseNumber;
+    private final String city;
+    private final String zip;
+    private final String country;
+    private final String email;
     private String password;
-    private String confirmPassword;
 
-
+    /**
+     * Constructor  of a new User object with the provided personal information.
+     * @param firstName User's first name.
+     * @param lastName User's last name.
+     * @param dateOfBirth User's date of birth.
+     * @param street User's street address.
+     * @param houseNumber User's house number.
+     * @param city User's city.
+     * @param zip User's zip code.
+     * @param country User's country.
+     * @param email User's email address.
+     * @param password User's password.
+     */
     public User(String firstName,
                 String lastName,
                 String dateOfBirth,
@@ -37,14 +52,25 @@ public class User {
         this.password = password;
     }
 
-    // Get email of user
+    /**
+     * Gets email address of user.
+     * @return User's email address.
+     */
     public String getEmail() {
         return email;
     }
 
-    // // Get password of user
+    /**
+     * Gets password of user.
+     * @return User's password.
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Sets the password for the user.
+     * @param password The new password to be set.
+     */
+    public void setPassword(String password) { this.password = password; }
 }

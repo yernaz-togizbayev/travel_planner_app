@@ -54,7 +54,7 @@
         android:drawableLeft="@drawable/user_icon"
         android:ems="14"
         android:fontFamily="sans-serif"
-        android:hint="Last Name"
+        android:hint="Last Name*"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +70,7 @@
         android:drawableLeft="@drawable/user_icon"
         android:ems="14"
         android:fontFamily="sans-serif"
-        android:hint="First Name"
+        android:hint="First Name*"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +86,7 @@
         android:drawableLeft="@android:drawable/sym_action_email"
         android:drawableTint="#808080"
         android:ems="14"
-        android:hint="Email"
+        android:hint=" Email*"
         android:inputType="textEmailAddress"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,14 +99,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:drawableLeft="@drawable/calender_icon"
+        android:layout_marginEnd="39dp"
+        android:width="265dp"
         android:ems="14"
-        android:hint="Date of Birth"
+        android:hint="Date of Birth (DD.MM.YYYY)"
         android:inputType="date"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LastNameEditText" />
 
     <EditText
@@ -117,7 +116,7 @@
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/address_icon"
         android:ems="11"
-        android:hint="Street"
+        android:hint=" Street"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -185,7 +184,7 @@
         android:drawableLeft="@android:drawable/ic_lock_idle_lock"
         android:drawableTint="#808080"
         android:ems="14"
-        android:hint="Password"
+        android:hint=" Password*"
         android:inputType="textPassword"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -194,14 +193,14 @@
         app:layout_constraintTop_toBottomOf="@+id/SignupEmailEditText" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/SignupConfirmPasswordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:drawableLeft="@android:drawable/ic_lock_idle_lock"
         android:drawableTint="#808080"
         android:ems="14"
-        android:hint="Confirm password"
+        android:hint=" Confirm password*"
         android:inputType="textPassword"
         android:scrollbarSize="10dp"
         android:textSize="20sp"
@@ -221,7 +220,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
+        app:layout_constraintTop_toBottomOf="@+id/SignupConfirmPasswordEditText" />
 
     <TextView
         android:id="@+id/SignInGoback"
@@ -238,5 +237,31 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/passwordRequirementsIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="45dp"
+        android:onClick="passwordRequirementsIconPress"
+        android:tint="#808080"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SignupEmailEditText"
+        app:srcCompat="@drawable/ic_information" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="12dp"
+        android:background="#d3d3d3"
+        android:backgroundTint="#d3d3d3"
+        android:clickable="true"
+        android:onClick="dateOfBirthCalenderIconPress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LastNameEditText"
+        app:srcCompat="@drawable/calender_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
