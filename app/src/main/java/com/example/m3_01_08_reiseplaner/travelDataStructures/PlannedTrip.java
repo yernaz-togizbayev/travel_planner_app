@@ -21,15 +21,19 @@ public class PlannedTrip implements Comparable<PlannedTrip> {
 
     TravelInformation information;
 
+    TravelRecommendation recommendation;
 
-    public PlannedTrip(TravelInformation information){
+
+    public PlannedTrip(TravelRecommendation recommendation){
+        TravelInformation information = recommendation.getInformation();
         tripDestinationCountry = information.getDestinationCountry();
         tripDestinationCity = information.getDestinationCity();
         tripDate = information.getStartDate();
         tripEndDate = information.getBackTravelDate();
         this.information = information;
+        this.recommendation = recommendation;
 
-
+        //TODO: Change bool to false before handing it in final
         pictureUrl = UnsplashAPI.getCountryPictureURL(tripDestinationCountry, true);
     }
 
@@ -39,6 +43,19 @@ public class PlannedTrip implements Comparable<PlannedTrip> {
      */
     public void addEvent(Event event){
         events.add(event);
+    }
+
+    public String getFirstEvent(){
+        if(events.isEmpty()){
+            return "No Events planned";
+        }
+
+        Event firstEvent = events.get(0);
+        String eventName = firstEvent.getName();
+        String eventDate = firstEvent.getDate();
+        String eventTime = firstEvent.getTime();
+
+        return eventName + "  at: " + eventDate + ", " + eventTime + " o'clock";
     }
 
     /**
