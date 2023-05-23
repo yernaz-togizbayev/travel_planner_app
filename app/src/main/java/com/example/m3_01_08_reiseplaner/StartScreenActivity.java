@@ -80,11 +80,5 @@ public class StartScreenActivity extends AppCompatActivity {
             Intent intent = new Intent(StartScreenActivity.this, SignUpActivity.class);
             startActivity(intent);
         });
-
-        TextView AddTripText = findViewById(R.id.AddTripStart);
-        AddTripText.setOnClickListener(view -> {
-            Intent intent = new Intent(StartScreenActivity.this, EventOverviewActivity.class);
-            startActivity(intent);
-        });
     }
 }

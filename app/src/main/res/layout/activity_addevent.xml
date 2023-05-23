@@ -7,7 +7,24 @@
     android:addStatesFromChildren="false"
     android:background="#DEF0F7"
     android:clickable="true"
+    android:onClick="goBackAddEvent"
     tools:context="@tools:sample/date/ddmmyy">
+
+    <TextView
+        android:id="@+id/EventAddGoBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:drawableLeft="@drawable/goback_icon"
+        android:drawableTint="#155FD4"
+        android:onClick="goBackAddEvent"
+        android:text=" Go Back"
+        android:textColor="#155FD4"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/EventNameEditText"
