@@ -32,6 +32,7 @@ public class UnsplashAPI {
         }
 
         getImageURLFromUnSplash(country);
+        Log.d(TAG, pictureURL);
         return pictureURL;
     }
 
