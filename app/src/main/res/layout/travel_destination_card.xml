@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#BFBABA">
+    android:layout_height="320dp"
+    android:background="#DEF0F7">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/travel_destinantion_card"
@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.593" >
+        app:layout_constraintVertical_bias="0.593">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                 app:barrierDirection="top" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/countryImageView"
                 android:layout_width="157dp"
                 android:layout_height="150dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintStart_toEndOf="@+id/countryImageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -63,15 +63,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/cityTextView" />
 
             <TextView
-                android:id="@+id/textView12"
-                android:layout_width="139dp"
-                android:layout_height="38dp"
+                android:id="@+id/dayCounterView"
+                android:layout_width="235dp"
+                android:layout_height="39dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Trip in 10 Days"
                 android:textAlignment="textStart"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintStart_toEndOf="@+id/countryImageView"
                 app:layout_constraintTop_toBottomOf="@+id/countryTextView" />
 
             <TextView
@@ -83,10 +83,10 @@
                 android:text="Next Event:"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                app:layout_constraintTop_toBottomOf="@+id/countryImageView" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/eventTextView"
                 android:layout_width="281dp"
                 android:layout_height="46dp"
                 android:fontFamily="sans-serif-medium"
@@ -106,13 +106,26 @@
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.291"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                app:layout_constraintTop_toBottomOf="@+id/eventTextView"
+                app:layout_constraintVertical_bias="0.0" />
 
             <androidx.constraintlayout.widget.Barrier
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:barrierDirection="top" />
+
+            <ImageButton
+                android:id="@+id/deleteButton"
+                android:layout_width="76dp"
+                android:layout_height="74dp"
+                android:layout_marginEnd="16dp"
+                android:background="#EC7070"
+                android:contentDescription="Delete Button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_delete" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
