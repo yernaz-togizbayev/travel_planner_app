@@ -17,7 +17,6 @@ import com.example.m3_01_08_reiseplaner.travelDataStructures.PlannedTrip;
 import java.util.List;
 
 public class MainMenuActivity extends AppCompatActivity {
-
     private List<PlannedTrip> savedTrips;
 
     @Override
@@ -46,7 +45,5 @@ public class MainMenuActivity extends AppCompatActivity {
         travelsView.setAdapter(adapter);
         travelsView.setLayoutManager(new LinearLayoutManager(this));
     }
-
-
 
 }
