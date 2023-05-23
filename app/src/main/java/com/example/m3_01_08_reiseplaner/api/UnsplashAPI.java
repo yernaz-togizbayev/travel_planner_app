@@ -1,9 +1,13 @@
 package com.example.m3_01_08_reiseplaner.api;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.JsonObject;
 
+import java.io.IOException;
+
+import kotlinx.coroutines.Dispatchers;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -13,8 +17,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UnsplashAPI {
     static final String TAG = "UnsplashAPI";
-    static private final String unsplashAccessKey = "rWkcWI2vg9J2_BPDL5Ulb9-bS7-1uttNKGSItMH-9gs";
-    static private final String placeHolder = "https://images.unsplash.com/photo-1584974292709-5c2f0619971b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTAyMDl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODQ1MDUwOTZ8&ixlib=rb-4.0.3&q=80&w=1080";
+    static private final String UNSPLASH_ACCESS_KEY = "rWkcWI2vg9J2_BPDL5Ulb9-bS7-1uttNKGSItMH-9gs";
+    static private final String PLACEHOLDER = "https://images.unsplash.com/photo-1584974292709-5c2f0619971b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTAyMDl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODQ1MDUwOTZ8&ixlib=rb-4.0.3&q=80&w=1080";
     static private String pictureURL = "";
 
 
@@ -25,15 +29,13 @@ public class UnsplashAPI {
      * @return
      */
     static public String getCountryPictureURL(String country, boolean test){
-        pictureURL = placeHolder;
+        pictureURL = PLACEHOLDER;
 
         if(test){
-            return placeHolder;
+            return PLACEHOLDER;
         }
 
-        getImageURLFromUnSplash(country);
-        Log.d(TAG, pictureURL);
-        return pictureURL;
+        return getImageURLFromUnSplash(country);
     }
 
 
@@ -41,46 +43,55 @@ public class UnsplashAPI {
      * Calls the Unsplash API and fetches the URL of a random picture that fits the country
      * @param country
      */
-    static private void getImageURLFromUnSplash(String country){
-        pictureURL =placeHolder;
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
-
-        // Create a Retrofit instance
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.unsplash.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(okHttpClient)
-                .build();
-
-        // Create an instance of the UnsplashApi interface
-        UnsplashAPIInterface unsplashApi = retrofit.create(UnsplashAPIInterface.class);
-
-
-        // Make the API call to fetch a random photo from the specified country
-        Call<JsonObject> call = unsplashApi.getRandomPhoto(country, unsplashAccessKey);
-        call.enqueue(new Callback<JsonObject>() {
+    private static String getImageURLFromUnSplash(String country) {
+        // Create an AsyncTask to perform the network call on a background thread
+        AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
             @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if (response.isSuccessful()) {
-                    JsonObject jsonResponse = response.body();
-                    if (jsonResponse != null) {
-                        String imageUrl = jsonResponse.getAsJsonObject("urls").get("regular").getAsString();
+            protected String doInBackground(String... strings) {
+                OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
 
-                        // Pass the image URL to the callback function
-                        pictureURL = imageUrl;
-                        Log.d(TAG, pictureURL);
+                // Create a Retrofit instance
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://api.unsplash.com/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .client(okHttpClient)
+                        .build();
+
+                // Create an instance of the UnsplashApi interface
+                UnsplashAPIInterface unsplashApi = retrofit.create(UnsplashAPIInterface.class);
+
+                try {
+                    // Make the API call to fetch a random photo from the specified country
+                    Call<JsonObject> call = unsplashApi.getRandomPhoto(strings[0], UNSPLASH_ACCESS_KEY);
+                    Response<JsonObject> response = call.execute();
+
+                    if (response.isSuccessful()) {
+                        JsonObject jsonResponse = response.body();
+                        if (jsonResponse != null) {
+                            String imageUrl = jsonResponse.getAsJsonObject("urls").get("regular").getAsString();
+                            Log.d(TAG, imageUrl);
+                            return imageUrl;
+                        } else {
+                            Log.w(TAG, "Empty response from Unsplash API");
+                        }
+                    } else {
+                        Log.w(TAG, "Error connecting to Unsplash API: " + response.code());
                     }
-                } else {
-                    Log.w(TAG, "Error Connecting with UnsplashedAPI");
+                } catch (IOException e) {
+                    Log.e(TAG, "Error connecting to Unsplash API", e);
                 }
-            }
 
-            @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
-                Log.w(TAG, "ERROR: Internet Connection");
+                return PLACEHOLDER;
             }
-        });
+        };
 
+        try {
+            // Execute the AsyncTask to perform the network call
+            return task.execute(country).get();
+        } catch (Exception e) {
+            Log.e(TAG, "Error executing AsyncTask", e);
+            return PLACEHOLDER;
+        }
     }
 
 
