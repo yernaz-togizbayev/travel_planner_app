@@ -22,6 +22,11 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(travelIntent);
     }
 
+    public void newSettingsButtonPress(View view){
+        Intent settingsIntent = new Intent(this, SettingsActivity.class);
+        startActivity(settingsIntent);
+    }
+
     /**
      * Initializes the Activity with everything needed when opening this activity
      */
