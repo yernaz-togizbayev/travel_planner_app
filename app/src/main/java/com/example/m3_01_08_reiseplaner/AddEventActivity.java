@@ -1,12 +1,15 @@
 package com.example.m3_01_08_reiseplaner;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +40,16 @@ public class AddEventActivity extends AppCompatActivity {
         TextView eventTime = findViewById(R.id.TimeEditText);
         TextView eventPostalCode = findViewById(R.id.PostalCodeEditText);
         TextView eventHouseNumber = findViewById(R.id.HouseNumberEditText);
+
+        if(eventDate != null && eventDate.getText() != null && eventDate.getText().length()>9) {
+            showSignUpPopupMessageEvents("please enter a correct date in form DD/MM/YY", Color.parseColor("#eea29e"));
+            return;
+        }
+
+        /*if( eventTime != null && eventTime.getText() != null && eventTime.getText().length()!=5) {
+            showSignUpPopupMessageEvents("please enter a correct time in form 12:00 ", Color.parseColor("#eea29e"));
+            return;
+        }*/
 
         if(eventName != null && eventName.getText() != null && !eventName.getText().toString().isEmpty())
             event.setName(eventName.getText().toString());
@@ -76,12 +89,27 @@ public class AddEventActivity extends AppCompatActivity {
         im.setImageResource(currentIcon);
     }
 
+    public void goBackAddEvent(View view){
+        Intent intent = new Intent(AddEventActivity.this, EventOverviewActivity.class);
+        startActivity(intent);
+    }
+
     public static void setCurrentIcon(int id){
         currentIcon = id;
     }
 
     public List<Event> getEvents(){
         return events;
+    }
+
+    private void showSignUpPopupMessageEvents(String textMessage, int backgroundColor) {
+        Toast popupMessage = Toast.makeText(this, textMessage, Toast.LENGTH_LONG);
+
+        View popupMessageView = popupMessage.getView();
+        popupMessageView.setBackgroundColor(backgroundColor);
+
+        popupMessage.setGravity(Gravity.CENTER, 0, 0);
+        popupMessage.show();
     }
 
 }

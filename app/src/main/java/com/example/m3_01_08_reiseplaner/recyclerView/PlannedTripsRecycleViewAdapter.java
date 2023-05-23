@@ -15,9 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.m3_01_08_reiseplaner.EventOverviewActivity;
-import com.example.m3_01_08_reiseplaner.MainMenuActivity;
 import com.example.m3_01_08_reiseplaner.R;
-import com.example.m3_01_08_reiseplaner.staticDataStorer.StoredTravels;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.PlannedTrip;
 import com.squareup.picasso.Picasso;
 
@@ -123,9 +121,9 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
 
                     PlannedTrip chosenTrip = plannedTrips.get(position);
 
-                    EventOverviewActivity.events = EventOverviewActivity.eventMap.get(chosenTrip.getId());
-                    EventOverviewActivity.id = chosenTrip.getId();
-                    EventOverviewActivity.destination = chosenTrip.getTripDestinationCity();
+                    EventOverviewActivity.setEvents(EventOverviewActivity.getEventMap().get(chosenTrip.getId()));
+                    EventOverviewActivity.setId(chosenTrip.getId());
+                    EventOverviewActivity.setDestination(chosenTrip.getTripDestinationCity());
 
                     Intent intent = new Intent(context, EventOverviewActivity.class);
                     context.startActivity(intent);
