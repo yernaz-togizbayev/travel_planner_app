@@ -63,7 +63,14 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
     public void onBindViewHolder(@NonNull PlannedTripsRecycleViewAdapter.CardDataHolder holder, int position) {
         PlannedTrip currentTravel = plannedTrips.get(position);
 
-        Picasso.get().load(currentTravel.getPictureUrl()).placeholder(R.drawable.loading).error(R.drawable.no_pictures_found).into(holder.countryImageView);
+        float density = context.getResources().getDisplayMetrics().density;
+        int widthInDp = 157;    // Desired width in DP
+        int heightInDp = 150;   // Desired height in DP
+
+        int widthInPixels = (int) (widthInDp * density);
+        int heightInPixels = (int) (heightInDp * density);
+
+        Picasso.get().load(currentTravel.getPictureUrl()).resize(widthInPixels,heightInPixels).placeholder(R.drawable.loading).error(R.drawable.no_pictures_found).into(holder.countryImageView);
         holder.countryTextView.setText(currentTravel.getTripDestinationCountry());
         holder.cityTextView.setText(currentTravel.getTripDestinationCity());
         holder.daysTillTravelTextView.setText(currentTravel.getDaysTillTravelStart());

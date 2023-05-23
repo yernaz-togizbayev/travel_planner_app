@@ -1,11 +1,18 @@
 package com.example.m3_01_08_reiseplaner.api;
 
-import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.JsonObject;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.ConnectException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import kotlinx.coroutines.Dispatchers;
 import okhttp3.OkHttpClient;
@@ -44,10 +51,9 @@ public class UnsplashAPI {
      * @param country
      */
     private static String getImageURLFromUnSplash(String country) {
-        // Create an AsyncTask to perform the network call on a background thread
-        AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
-            @Override
-            protected String doInBackground(String... strings) {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<String> future = executor.submit(() -> {
+            try {
                 OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
 
                 // Create a Retrofit instance
@@ -60,38 +66,48 @@ public class UnsplashAPI {
                 // Create an instance of the UnsplashApi interface
                 UnsplashAPIInterface unsplashApi = retrofit.create(UnsplashAPIInterface.class);
 
+                // Make the API call to fetch a random photo from the specified country using coroutines
                 try {
-                    // Make the API call to fetch a random photo from the specified country
-                    Call<JsonObject> call = unsplashApi.getRandomPhoto(strings[0], UNSPLASH_ACCESS_KEY);
-                    Response<JsonObject> response = call.execute();
-
-                    if (response.isSuccessful()) {
-                        JsonObject jsonResponse = response.body();
-                        if (jsonResponse != null) {
-                            String imageUrl = jsonResponse.getAsJsonObject("urls").get("regular").getAsString();
-                            Log.d(TAG, imageUrl);
-                            return imageUrl;
-                        } else {
-                            Log.w(TAG, "Empty response from Unsplash API");
-                        }
+                    JsonObject response = unsplashApi.getRandomPhoto(country, UNSPLASH_ACCESS_KEY).execute().body();
+                    if (response != null) {
+                        String imageUrl = response.getAsJsonObject("urls").get("regular").getAsString();
+                        Log.d(TAG, imageUrl);
+                        return imageUrl;
                     } else {
-                        Log.w(TAG, "Error connecting to Unsplash API: " + response.code());
+                        Log.w(TAG, "Empty response from Unsplash API");
                     }
-                } catch (IOException e) {
+                } catch (Exception e) {
                     Log.e(TAG, "Error connecting to Unsplash API", e);
                 }
 
                 return PLACEHOLDER;
+
+            } catch (Exception e) {
+                System.out.println("Connection failed!");
+                e.printStackTrace();
+                return null;
             }
-        };
+
+        });
 
         try {
-            // Execute the AsyncTask to perform the network call
-            return task.execute(country).get();
+
+            //Get the result from the thread
+            String result = future.get();
+            if (result != null) {
+                Log.d(TAG, "Result: " + result);
+                return result;
+            } else {
+                Log.w(TAG, "API Call failed cause Result is null.");
+                return PLACEHOLDER;
+            }
         } catch (Exception e) {
-            Log.e(TAG, "Error executing AsyncTask", e);
-            return PLACEHOLDER;
+            Log.w(TAG, "Exception caught while making API Call to Unsplashed");
+            e.printStackTrace();
+        } finally {
+            executor.shutdown();
         }
+        return PLACEHOLDER;
     }
 
 
