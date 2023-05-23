@@ -23,6 +23,9 @@ public class PlannedTrip implements Comparable<PlannedTrip> {
 
     TravelRecommendation recommendation;
 
+    static Integer counter = 0;
+
+    Integer id = counter++;
 
     public PlannedTrip(TravelRecommendation recommendation){
         TravelInformation information = recommendation.getInformation();
@@ -108,6 +111,10 @@ public class PlannedTrip implements Comparable<PlannedTrip> {
 
     public String getPictureUrl() {
         return pictureUrl;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     @Override

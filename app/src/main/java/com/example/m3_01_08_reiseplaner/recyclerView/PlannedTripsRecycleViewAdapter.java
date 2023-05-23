@@ -32,7 +32,6 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
     private Context context;
     private List<PlannedTrip> plannedTrips = new ArrayList<PlannedTrip>();
 
-
     public PlannedTripsRecycleViewAdapter(Context context, List<PlannedTrip> plannedTravels){
         this.context = context;
         this.plannedTrips = plannedTravels;
@@ -123,6 +122,11 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
                     }
 
                     PlannedTrip chosenTrip = plannedTrips.get(position);
+
+                    EventOverviewActivity.events = EventOverviewActivity.eventMap.get(chosenTrip.getId());
+                    EventOverviewActivity.id = chosenTrip.getId();
+                    EventOverviewActivity.destination = chosenTrip.getTripDestinationCity();
+
                     Intent intent = new Intent(context, EventOverviewActivity.class);
                     context.startActivity(intent);
                 }

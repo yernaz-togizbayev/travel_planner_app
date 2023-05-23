@@ -3,37 +3,41 @@ package com.example.m3_01_08_reiseplaner;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.m3_01_08_reiseplaner.converter.LocalDateConverter;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.gridlines.LatLonGridlineOverlay2;
 
-import java.time.LocalDate;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class EventOverviewActivity extends AppCompatActivity {
-    static List<Event> events = new ArrayList<>();
+    public static List<Event> events = new ArrayList<>();
+
+    public static Integer id = 0;
+    public static Map<Integer, List<Event>> eventMap = new HashMap<>();
     static int rangeForEvents = 0;
+
+    public static String destination = "Vienna";
 
     //private static final String INTENT_KEY_CALENDER = "CalendarKey";
 
@@ -45,20 +49,49 @@ public class EventOverviewActivity extends AppCompatActivity {
         Context ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
         setContentView(R.layout.activity_eventsoverview);
+        if(events==null)
+            events = new ArrayList<>();
+
         setEventPictureFirst();
         setEventPictureSecond();
         setEventPictureThird();
-        
+
+        //Set map to point in Thailand
+
         mapView = (MapView) findViewById(R.id.map);
         mapView.setTileSource(TileSourceFactory.MAPNIK);
         IMapController mapController = mapView.getController();
-        mapController.setZoom(9.5);
-        GeoPoint startPoint = new GeoPoint(13.736717, 100.523186);
-        mapController.setCenter(startPoint);
+        mapController.setZoom(5);
+        MapView mMapView;
+
+        if(destination != null && destination.length()>3)
+            mapController.setCenter(getGeoPointFromCityName(destination));
+        else
+            mapController.setCenter(getGeoPointFromCityName("Mexico"));
+
     }
 
+    private GeoPoint getGeoPointFromCityName(String city){
+        Geocoder geo = new Geocoder(getBaseContext(), Locale.getDefault());
+        List<Address> address;
+        try {
+            address = geo.getFromLocationName(city, 5);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        
+        if(address==null || address.isEmpty())
+            return new GeoPoint(48.210033, 16.363449);
+
+        Address locationCity = address.get(0);
+        locationCity.getLatitude();
+        locationCity.getLongitude();
+        GeoPoint gp = new GeoPoint(locationCity.getLatitude(), locationCity.getLongitude());
+        return gp;
+    }
 
     public void EventOverviewGoBackButtonPress(View view){
+        eventMap.put(id, events);
         Intent intent = new Intent(EventOverviewActivity.this, MainMenuActivity.class);
         startActivity(intent);
     }
@@ -216,44 +249,6 @@ public class EventOverviewActivity extends AppCompatActivity {
         setEventPictureSecond();
         setEventPictureThird();
     }
-
-    /*public void onDepartureDateButtonPressEventOverview(View view){
-        Intent departureDateCalendarIntent = new Intent(this, CalendarActivity.class);
-        setDepatureDateResultEventOverview.launch(departureDateCalendarIntent);
-    }
-
-    private void setReturnDateTextEventOverview(Intent data){
-        if(data == null){
-            return;
-        }
-        LocalDate departureDate = (LocalDate) data.getSerializableExtra(INTENT_KEY_CALENDER);
-        EditText departureDateText = findViewById(R.id.returnDateText);
-        String departureDateOutput = LocalDateConverter.localDateToString(departureDate);
-        departureDateText.setText(departureDateOutput);
-    }
-
-    private void setDepartureDateTextEventOverview(Intent data){
-        if(data == null){
-            return;
-        }
-        LocalDate departureDate = (LocalDate) data.getSerializableExtra(INTENT_KEY_CALENDER);
-        EditText departureDateText = findViewById(R.id.departureDateText);
-        String departureDateOutput = LocalDateConverter.localDateToString(departureDate);
-        departureDateText.setText(departureDateOutput);
-    }
-
-    ActivityResultLauncher<Intent> setDepatureDateResultEventOverview = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-        @Override
-        public void onActivityResult(ActivityResult result) {
-            if(result != null && result.getResultCode() == RESULT_OK){
-                setDepartureDateTextEventOverview(result.getData());
-            }
-        }
-
-    public void onReturnDateButtonPressEventOverview(View view){
-        Intent departureDateCalendarIntent = new Intent(this, CalendarActivity.class);
-        setDepatureDateResultEventOverview.launch(departureDateCalendarIntent);
-    }*/
 
     public void deleteButton1Pressed(View view){
         events.remove(rangeForEvents);
