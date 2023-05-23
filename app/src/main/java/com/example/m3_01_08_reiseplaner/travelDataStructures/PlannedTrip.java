@@ -38,7 +38,7 @@ public class PlannedTrip implements Comparable<PlannedTrip> {
         this.recommendation = recommendation;
 
         //TODO: Change bool to false before handing it in final
-        pictureUrl = UnsplashAPI.getCountryPictureURL(tripDestinationCountry, true);
+        pictureUrl = UnsplashAPI.getCountryPictureURL(tripDestinationCountry, false);
     }
 
     /**
