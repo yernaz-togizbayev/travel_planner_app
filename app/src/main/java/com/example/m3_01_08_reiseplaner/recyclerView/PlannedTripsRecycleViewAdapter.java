@@ -121,6 +121,7 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
 
                     PlannedTrip chosenTrip = plannedTrips.get(position);
 
+
                     EventOverviewActivity.setEvents(EventOverviewActivity.getEventMap().get(chosenTrip.getId()));
                     EventOverviewActivity.setId(chosenTrip.getId());
                     EventOverviewActivity.setDestination(chosenTrip.getTripDestinationCity());

@@ -1,6 +1,7 @@
 package com.example.m3_01_08_reiseplaner.travelDataStructures;
 
 import com.example.m3_01_08_reiseplaner.Event;
+import com.example.m3_01_08_reiseplaner.EventOverviewActivity;
 import com.example.m3_01_08_reiseplaner.api.UnsplashAPI;
 
 import java.time.LocalDate;
@@ -49,6 +50,10 @@ public class PlannedTrip implements Comparable<PlannedTrip> {
     }
 
     public String getFirstEvent(){
+        List<Event> fetchedEvents = EventOverviewActivity.getEventMap().get(id);
+        if(fetchedEvents != null){
+            events = fetchedEvents;
+        }
         if(events.isEmpty()){
             return "No Events planned";
         }
@@ -57,6 +62,9 @@ public class PlannedTrip implements Comparable<PlannedTrip> {
         String eventName = firstEvent.getName();
         String eventDate = firstEvent.getDate();
         String eventTime = firstEvent.getTime();
+        if(eventDate.equals("") || eventTime.equals("")){
+            return "Next Event is " + eventName;
+        }
 
         return eventName + "  at: " + eventDate + ", " + eventTime + " o'clock";
     }
