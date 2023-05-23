@@ -19,6 +19,11 @@ public class StoredTravels {
     }
 
     static public List<PlannedTrip> getTrips(){
+
         return plannedTrips;
+    }
+
+    static public void removeTrip(PlannedTrip trip){
+        plannedTrips.remove(trip);
     }
 }

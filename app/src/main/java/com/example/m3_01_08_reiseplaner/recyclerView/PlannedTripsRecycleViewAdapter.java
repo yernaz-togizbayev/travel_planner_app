@@ -15,7 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.m3_01_08_reiseplaner.EventOverviewActivity;
+import com.example.m3_01_08_reiseplaner.MainMenuActivity;
 import com.example.m3_01_08_reiseplaner.R;
+import com.example.m3_01_08_reiseplaner.staticDataStorer.StoredTravels;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.PlannedTrip;
 import com.squareup.picasso.Picasso;
 
@@ -135,6 +137,25 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
 
                     Intent intent = new Intent(context, EventOverviewActivity.class);
                     context.startActivity(intent);
+                }
+            });
+
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if(position == RecyclerView.NO_POSITION){
+                        Log.w(TAG, "NO POSITION");
+                        return;
+                    }
+
+                    PlannedTrip chosenTrip = plannedTrips.get(position);
+                    StoredTravels.removeTrip(chosenTrip);
+
+
+                    Intent intent = new Intent(context, MainMenuActivity.class);
+                    context.startActivity(intent);
+
                 }
             });
 
