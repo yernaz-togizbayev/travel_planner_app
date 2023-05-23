@@ -1,16 +1,33 @@
 package com.example.m3_01_08_reiseplaner;
 
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.m3_01_08_reiseplaner.converter.LocalDateConverter;
+
+import org.osmdroid.api.IMapController;
+import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,18 +35,31 @@ public class EventOverviewActivity extends AppCompatActivity {
     static List<Event> events = new ArrayList<>();
     static int rangeForEvents = 0;
 
+    //private static final String INTENT_KEY_CALENDER = "CalendarKey";
+
+    MapView mapView = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Context ctx = getApplicationContext();
+        Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
         setContentView(R.layout.activity_eventsoverview);
         setEventPictureFirst();
         setEventPictureSecond();
         setEventPictureThird();
+        
+        mapView = (MapView) findViewById(R.id.map);
+        mapView.setTileSource(TileSourceFactory.MAPNIK);
+        IMapController mapController = mapView.getController();
+        mapController.setZoom(9.5);
+        GeoPoint startPoint = new GeoPoint(13.736717, 100.523186);
+        mapController.setCenter(startPoint);
     }
 
 
     public void EventOverviewGoBackButtonPress(View view){
-        Intent intent = new Intent(EventOverviewActivity.this, StartScreenActivity.class);
+        Intent intent = new Intent(EventOverviewActivity.this, MainMenuActivity.class);
         startActivity(intent);
     }
 
@@ -186,6 +216,44 @@ public class EventOverviewActivity extends AppCompatActivity {
         setEventPictureSecond();
         setEventPictureThird();
     }
+
+    /*public void onDepartureDateButtonPressEventOverview(View view){
+        Intent departureDateCalendarIntent = new Intent(this, CalendarActivity.class);
+        setDepatureDateResultEventOverview.launch(departureDateCalendarIntent);
+    }
+
+    private void setReturnDateTextEventOverview(Intent data){
+        if(data == null){
+            return;
+        }
+        LocalDate departureDate = (LocalDate) data.getSerializableExtra(INTENT_KEY_CALENDER);
+        EditText departureDateText = findViewById(R.id.returnDateText);
+        String departureDateOutput = LocalDateConverter.localDateToString(departureDate);
+        departureDateText.setText(departureDateOutput);
+    }
+
+    private void setDepartureDateTextEventOverview(Intent data){
+        if(data == null){
+            return;
+        }
+        LocalDate departureDate = (LocalDate) data.getSerializableExtra(INTENT_KEY_CALENDER);
+        EditText departureDateText = findViewById(R.id.departureDateText);
+        String departureDateOutput = LocalDateConverter.localDateToString(departureDate);
+        departureDateText.setText(departureDateOutput);
+    }
+
+    ActivityResultLauncher<Intent> setDepatureDateResultEventOverview = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if(result != null && result.getResultCode() == RESULT_OK){
+                setDepartureDateTextEventOverview(result.getData());
+            }
+        }
+
+    public void onReturnDateButtonPressEventOverview(View view){
+        Intent departureDateCalendarIntent = new Intent(this, CalendarActivity.class);
+        setDepatureDateResultEventOverview.launch(departureDateCalendarIntent);
+    }*/
 
     public void deleteButton1Pressed(View view){
         events.remove(rangeForEvents);

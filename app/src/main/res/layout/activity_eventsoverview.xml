@@ -312,5 +312,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_delete" />
 
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="412dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
