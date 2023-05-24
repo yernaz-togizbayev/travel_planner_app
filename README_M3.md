@@ -21,7 +21,12 @@ osmdroid for Map Funtionality
 ]
 
 Dauer der Entwicklung:
-[40 Stunden]
+[65 Stunden]
 
 Weitere Anmerkungen:
-[...]
+[Folgende Bilder wurden verwendet:
+https://de.m.wikipedia.org/wiki/Datei:Logo_%C3%96BB.svg, 24.05.2023;
+https://de.m.wikipedia.org/wiki/Datei:Austrian_Airlines_Logo_neu.svg, 24.05.2023;
+https://de.m.wikipedia.org/wiki/Datei:Flixbus_201x_logo.svg, 24.05.2023
+https://de.wikipedia.org/wiki/Datei:AIDA_Cruises_logo.svg, 24.05.2023
+]
