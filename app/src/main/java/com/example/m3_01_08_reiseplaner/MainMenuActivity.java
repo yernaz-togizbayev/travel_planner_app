@@ -17,6 +17,8 @@ import com.example.m3_01_08_reiseplaner.travelDataStructures.PlannedTrip;
 import java.util.List;
 
 public class MainMenuActivity extends AppCompatActivity {
+
+    public static final String version = "Reiseplaner alpha 1.0.0";
     private List<PlannedTrip> savedTrips;
 
     @Override
