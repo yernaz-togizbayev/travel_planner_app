@@ -10,8 +10,8 @@
         android:id="@+id/travel_destinantion_card"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:background="#AFA9A9"
-        android:backgroundTint="#AAA0A0"
+        android:background="#D68888"
+        android:backgroundTint="#8AD8DC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -53,45 +53,46 @@
 
             <TextView
                 android:id="@+id/countryTextView"
-                android:layout_width="142dp"
-                android:layout_height="40dp"
+                android:layout_width="246dp"
+                android:layout_height="41dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Country"
                 android:textAlignment="center"
-                android:textSize="16sp"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/cityTextView"
                 app:layout_constraintStart_toStartOf="@+id/cityTextView"
                 app:layout_constraintTop_toBottomOf="@+id/cityTextView" />
 
             <TextView
                 android:id="@+id/dayCounterView"
-                android:layout_width="235dp"
-                android:layout_height="39dp"
+                android:layout_width="247dp"
+                android:layout_height="43dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Trip in 10 Days"
-                android:textAlignment="textStart"
+                android:textAlignment="center"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/countryImageView"
                 app:layout_constraintTop_toBottomOf="@+id/countryTextView" />
 
             <TextView
                 android:id="@+id/textView13"
-                android:layout_width="88dp"
-                android:layout_height="29dp"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="16dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Next Event:"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/countryImageView" />
 
             <TextView
                 android:id="@+id/eventTextView"
-                android:layout_width="281dp"
-                android:layout_height="46dp"
+                android:layout_width="365dp"
+                android:layout_height="45dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Event Name XY in XY Days"
-                android:textSize="16sp"
+                android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="@+id/textView13"
                 app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -121,8 +122,11 @@
                 android:layout_width="76dp"
                 android:layout_height="74dp"
                 android:layout_marginEnd="16dp"
-                android:background="#EC7070"
+                android:adjustViewBounds="false"
+                android:background="@android:drawable/btn_default"
+                android:backgroundTint="#EC7070"
                 android:contentDescription="Delete Button"
+                android:cropToPadding="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@drawable/ic_delete" />
