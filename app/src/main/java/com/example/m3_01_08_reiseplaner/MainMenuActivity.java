@@ -31,6 +31,11 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(travelIntent);
     }
 
+    public void newInfoButtonPress(View view){
+        Intent infoIntent = new Intent(this, InfoActivity.class);
+        startActivity(infoIntent);
+    }
+
     /**
      * Initializes the Activity with everything needed when opening this activity
      */
