@@ -9,15 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class InfoActivity extends AppCompatActivity {
 
-    private static final String version = "Reiseplaner Version alpha 1.0.0";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
         TextView versionText = findViewById(R.id.versionText);
-        versionText.setText(version);
+        versionText.setText(MainMenuActivity.version);
     }
 
     public void infoGoBackPress(View view){

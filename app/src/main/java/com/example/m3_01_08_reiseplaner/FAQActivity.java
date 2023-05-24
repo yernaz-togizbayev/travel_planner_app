@@ -13,6 +13,9 @@ public class FAQActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faq);
+
+        TextView versionText = findViewById(R.id.versionText);
+        versionText.setText(MainMenuActivity.version);
     }
 
     public void faqGoBackPress(View view){
