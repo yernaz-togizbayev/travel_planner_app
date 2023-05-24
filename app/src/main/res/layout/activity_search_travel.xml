@@ -143,12 +143,12 @@
 
     <EditText
         android:id="@+id/departureDateText"
-        android:layout_width="wrap_content"
-        android:layout_height="65dp"
+        android:layout_width="256dp"
+        android:layout_height="62dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="Departure Date"
+        android:hint="Departure Date (DD.MM.YYYY)"
         android:inputType="date"
         app:layout_constraintStart_toEndOf="@+id/departureDateButton"
         app:layout_constraintTop_toTopOf="@+id/departureDateButton" />
@@ -189,12 +189,12 @@
 
     <EditText
         android:id="@+id/returnDateText"
-        android:layout_width="214dp"
-        android:layout_height="65dp"
+        android:layout_width="257dp"
+        android:layout_height="62dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="Return Date"
+        android:hint="Return Date (DD.MM.YYYY)"
         android:inputType="text"
         app:layout_constraintStart_toEndOf="@+id/returnDateButton"
         app:layout_constraintTop_toTopOf="@+id/returnDateButton" />
