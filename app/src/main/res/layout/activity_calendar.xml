@@ -20,6 +20,7 @@
         android:layout_width="343dp"
         android:layout_height="131dp"
         android:layout_marginTop="24dp"
+        android:backgroundTint="#094AB1"
         android:fontFamily="sans-serif-medium"
         android:onClick="enterDate"
         android:text="Add Date"
@@ -29,5 +30,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView"
-        app:layout_constraintVertical_bias="0.125" />
+        app:layout_constraintVertical_bias="0.267" />
 </androidx.constraintlayout.widget.ConstraintLayout>
