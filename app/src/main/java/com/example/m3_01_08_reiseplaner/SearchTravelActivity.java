@@ -18,12 +18,16 @@ import android.widget.Toast;
 
 import com.example.m3_01_08_reiseplaner.converter.LocalDateConverter;
 import com.example.m3_01_08_reiseplaner.enums.ETravelPreference;
+import com.example.m3_01_08_reiseplaner.exceptions.UnexpectedInputException;
+import com.example.m3_01_08_reiseplaner.inputValidation.InputValidation;
 import com.example.m3_01_08_reiseplaner.spinnerInputs.CountryList;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.TravelInformation;
 
 import java.io.InputStream;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SearchTravelActivity extends AppCompatActivity {
@@ -170,8 +174,8 @@ public class SearchTravelActivity extends AppCompatActivity {
             newTravelIntent.putExtra(INTENT_KEY_TRAVELINFORMATION, selectedTravelInformation);
             startActivity(newTravelIntent);
         }
-        catch (DateTimeException e){
-            Toast.makeText(this, "Please use the dd.MM.yyyy Date Format!", Toast.LENGTH_LONG).show();
+        catch (UnexpectedInputException e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
 
@@ -182,7 +186,7 @@ public class SearchTravelActivity extends AppCompatActivity {
      * @return
      * @throws DateTimeException
      */
-    private TravelInformation setTravelInformation() throws DateTimeException {
+    private TravelInformation setTravelInformation() throws UnexpectedInputException {
         EditText depatureCityText = findViewById(R.id.depatureCityText);
         Spinner depatureCountrySpinner = findViewById(R.id.depatureSpinner);
         EditText travelDestinationCityText = findViewById(R.id.travelDestinationText);
@@ -198,8 +202,22 @@ public class SearchTravelActivity extends AppCompatActivity {
         String depatureDateString = depatureDateText.getText().toString();
         String returnDateString = returnDateText.getText().toString();
 
-        LocalDate depatureDate = LocalDateConverter.convertStringToLocalDate(depatureDateString);
-        LocalDate returnDate = LocalDateConverter.convertStringToLocalDate(returnDateString);
+        List<String> inputs = Arrays.asList(
+                depatureCity, depatureCountry, travelDestinationCity, travelDestinationCountry, depatureDateString, returnDateString
+        );
+
+        InputValidation.checkIfInputsAreEmpty(inputs);
+
+        LocalDate depatureDate = LocalDate.now();
+        LocalDate returnDate = LocalDate.now();
+        try {
+            depatureDate = LocalDateConverter.convertStringToLocalDate(depatureDateString);
+            returnDate = LocalDateConverter.convertStringToLocalDate(returnDateString);
+        }
+        catch (DateTimeException e){
+            throw new UnexpectedInputException("Please input your Date in the dd.MM.yyyy Format");
+        }
+
         ETravelPreference chosenPreference = selectTravelPreference();
 
         TravelInformation chosenTravelInformation = new TravelInformation(
