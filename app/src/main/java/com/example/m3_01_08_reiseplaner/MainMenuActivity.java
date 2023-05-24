@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.m3_01_08_reiseplaner.recyclerView.PlannedTripsRecycleViewAdapter;
 import com.example.m3_01_08_reiseplaner.staticDataStorer.StoredTravels;
@@ -36,6 +37,11 @@ public class MainMenuActivity extends AppCompatActivity {
      */
     private void setUpActivity(){
         savedTrips = StoredTravels.getTrips();
+        if(savedTrips.isEmpty()){
+            String noTravels = "No planned travels!";
+            TextView hasTravelsText = findViewById(R.id.hasTravelsTextView);
+            hasTravelsText.setText(noTravels);
+        }
         setUpRecyclerView();
     }
 

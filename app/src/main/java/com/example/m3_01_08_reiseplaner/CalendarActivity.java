@@ -31,6 +31,7 @@ public class CalendarActivity extends AppCompatActivity {
      */
     private void chooseDate(){
         CalendarView calendar = findViewById(R.id.calendarView);
+        chosenDate = LocalDate.now();
 
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
