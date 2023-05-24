@@ -153,6 +153,14 @@ public class SearchTravelActivity extends AppCompatActivity {
         setReturnDateResult.launch(departureDateCalendarIntent);
     }
 
+    public void onGoBackButtonPress(View view){
+        finish();
+    }
+
+    /**
+     * Starts to Search for the given Travel Destination
+     * @param view
+     */
     public void onTravelSearchButtonPress(View view){
 
         try {
