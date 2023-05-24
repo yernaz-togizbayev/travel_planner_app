@@ -33,11 +33,14 @@ public class SearchTravelActivity extends AppCompatActivity {
 
     private static final String INTENT_KEY_TRAVELINFORMATION = "TravelInformation";
 
+    private static ETravelPreference lastChosenPreference = ETravelPreference.CHEAP;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_travel);
         fillTheSpinners();
+        setRadioButtons();
     }
 
 
@@ -52,6 +55,24 @@ public class SearchTravelActivity extends AppCompatActivity {
         Spinner travelCountryDropdown = findViewById(R.id.travelDestinationSpinner);
         depatureCountryDropdown.setAdapter(adapter);
         travelCountryDropdown.setAdapter(adapter);
+    }
+
+    private void setRadioButtons(){
+        RadioButton ecoButton = findViewById(R.id.ecoRadioButton);
+        RadioButton fastButton = findViewById(R.id.fastRadioButton);
+        RadioButton cheapButton = findViewById(R.id.cheapRadioButton);
+
+        if(lastChosenPreference.equals(ETravelPreference.ECOLOGICALLY)){
+            ecoButton.setChecked(true);
+            return;
+        }
+
+        if(lastChosenPreference.equals(ETravelPreference.FAST)){
+            fastButton.setChecked(true);
+            return;
+        }
+
+        cheapButton.setChecked(true);
     }
 
     /**
@@ -195,11 +216,14 @@ public class SearchTravelActivity extends AppCompatActivity {
         RadioButton fastButton = findViewById(R.id.fastRadioButton);
 
         if(ecoButton.isChecked()){
+            lastChosenPreference = ETravelPreference.ECOLOGICALLY;
             return ETravelPreference.ECOLOGICALLY;
         }
         if(fastButton.isChecked()){
+            lastChosenPreference = ETravelPreference.FAST;
             return  ETravelPreference.FAST;
         }
+        lastChosenPreference = ETravelPreference.CHEAP;
         return ETravelPreference.CHEAP;
     }
 }
