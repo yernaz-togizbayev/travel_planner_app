@@ -19,7 +19,9 @@ import android.widget.Toast;
 import com.example.m3_01_08_reiseplaner.converter.LocalDateConverter;
 import com.example.m3_01_08_reiseplaner.enums.ETravelPreference;
 import com.example.m3_01_08_reiseplaner.exceptions.UnexpectedInputException;
+import com.example.m3_01_08_reiseplaner.inputValidation.DateValidation;
 import com.example.m3_01_08_reiseplaner.inputValidation.InputValidation;
+import com.example.m3_01_08_reiseplaner.inputValidation.PopUpMessage;
 import com.example.m3_01_08_reiseplaner.spinnerInputs.CountryList;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.TravelInformation;
 
@@ -175,7 +177,7 @@ public class SearchTravelActivity extends AppCompatActivity {
             startActivity(newTravelIntent);
         }
         catch (UnexpectedInputException e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            PopUpMessage.showWarnPopUpMessage(e.getMessage(), this);
         }
 
 
@@ -217,6 +219,8 @@ public class SearchTravelActivity extends AppCompatActivity {
         catch (DateTimeException e){
             throw new UnexpectedInputException("Please input your Date in the dd.MM.yyyy Format");
         }
+
+        DateValidation.checkIfDatesMakeSense(depatureDate, returnDate);
 
         ETravelPreference chosenPreference = selectTravelPreference();
 
