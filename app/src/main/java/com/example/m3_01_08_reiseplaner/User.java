@@ -17,7 +17,7 @@ public class User {
     private String password;
 
     /**
-     * Constructor  of a new User object with the provided personal information.
+     * Constructor of a new User object with the provided personal information.
      * @param firstName User's first name.
      * @param lastName User's last name.
      * @param dateOfBirth User's date of birth.
@@ -73,4 +73,24 @@ public class User {
      * @param password The new password to be set.
      */
     public void setPassword(String password) { this.password = password; }
+
+    /**
+     * Gets user's name.
+     * @return Array of user's first and last name.
+     */
+    public String[] getName() { return new String[]{firstName, lastName}; }
+
+    /**
+     * Gets user's address.
+     * @return Array of street, number, city, zip and country.
+     */
+    public String[] getAddress() { return new String[]{street, houseNumber, city, zip, country}; }
+
+    /**
+     * Gets user's date of birth.
+     * @return User's date of birth.
+     */
+    public String getDateOfBirth() { return dateOfBirth; }
+
+
 }

@@ -38,6 +38,11 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(infoIntent);
     }
 
+    public void newSettingsButtonPress(View view){
+        Intent settingsIntent = new Intent(this, SettingsActivity.class);
+        startActivity(settingsIntent);
+    }
+
     /**
      * Initializes the Activity with everything needed when opening this activity
      */
@@ -52,5 +57,4 @@ public class MainMenuActivity extends AppCompatActivity {
         travelsView.setAdapter(adapter);
         travelsView.setLayoutManager(new LinearLayoutManager(this));
     }
-
 }
