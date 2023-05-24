@@ -18,6 +18,8 @@ import com.example.m3_01_08_reiseplaner.travelDataStructures.PlannedTrip;
 import java.util.List;
 
 public class MainMenuActivity extends AppCompatActivity {
+
+    public static final String version = "Reiseplaner alpha 1.0.0";
     private List<PlannedTrip> savedTrips;
 
     @Override
@@ -30,6 +32,16 @@ public class MainMenuActivity extends AppCompatActivity {
     public void newTravelButtonPress(View view){
         Intent travelIntent = new Intent(this, SearchTravelActivity.class);
         startActivity(travelIntent);
+    }
+
+    public void newInfoButtonPress(View view){
+        Intent infoIntent = new Intent(this, InfoActivity.class);
+        startActivity(infoIntent);
+    }
+
+    public void newSettingsButtonPress(View view){
+        Intent settingsIntent = new Intent(this, SettingsActivity.class);
+        startActivity(settingsIntent);
     }
 
     /**
@@ -51,5 +63,4 @@ public class MainMenuActivity extends AppCompatActivity {
         travelsView.setAdapter(adapter);
         travelsView.setLayoutManager(new LinearLayoutManager(this));
     }
-
 }

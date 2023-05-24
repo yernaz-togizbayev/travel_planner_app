@@ -18,6 +18,8 @@ import android.widget.Toast;
  */
 public class SignInActivity extends AppCompatActivity {
 
+    private static User currentUser;
+
     /**
      * Initialization of SignInActivity and setting up the view of a content.
      * @param savedInstanceState State of saved instance.
@@ -59,6 +61,7 @@ public class SignInActivity extends AppCompatActivity {
         User user = findUserByEmail(email);
 
         if (user != null && user.getPassword().equals(password)) {
+            currentUser = user;
             showSignInPopupMessage("SignIn was successful", Color.parseColor("#a4e8c0"));
             Intent intent = new Intent(SignInActivity.this, MainMenuActivity.class);
             startActivity(intent);
@@ -66,6 +69,21 @@ public class SignInActivity extends AppCompatActivity {
         else {
             showSignInPopupMessage("Invalid email or password", Color.parseColor("#eea29e"));
         }
+    }
+
+    /**
+     * Returns user currently logged in.
+     * Can only be called when there is a user logged in already, else variable won't have a value.
+     */
+    public static User getCurrentUser() { return currentUser; }
+
+    /**
+     * Sets user currently logged in from externally
+     * (for example when user information has been edited)
+     * @param user new User currently logged in.
+     */
+    public static void setCurrentUser(User user){
+        currentUser = user;
     }
 
     /**
