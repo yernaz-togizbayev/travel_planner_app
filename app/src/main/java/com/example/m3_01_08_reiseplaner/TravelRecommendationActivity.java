@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.m3_01_08_reiseplaner.enums.ETravelPreference;
@@ -32,6 +33,10 @@ public class TravelRecommendationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_travel_recommendation);
         loadActivity();
         setUpRecyclerView();
+    }
+
+    public void onGoBackButtonPress(View view){
+        finish();
     }
 
     /**

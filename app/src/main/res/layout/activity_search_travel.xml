@@ -16,6 +16,7 @@
         android:drawableLeft="@drawable/goback_icon"
         android:drawableTint="#155FD4"
         android:gravity="center"
+        android:onClick="onGoBackButtonPress"
         android:text=" Go Back"
         android:textAlignment="textStart"
         android:textColor="#155FD4"
