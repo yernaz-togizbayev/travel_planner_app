@@ -216,7 +216,7 @@
         android:layout_marginTop="44dp"
         android:backgroundTint="#155FD4"
         android:onClick="EditProfileButtonPress"
-        android:text="EDIT PROFILE"
+        android:text="SAVE PROFILE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"

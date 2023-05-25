@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MainMenuActivity extends AppCompatActivity {
 
-    public static final String version = "Reiseplaner alpha 1.0.0";
+    public static final String version = "EasyTravel alpha 1.0.0";
     private List<PlannedTrip> savedTrips;
 
     @Override
