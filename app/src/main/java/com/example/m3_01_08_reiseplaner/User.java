@@ -15,6 +15,7 @@ public class User {
     private final String country;
     private final String email;
     private String password;
+        //test commit
 
     /**
      * Constructor of a new User object with the provided personal information.
