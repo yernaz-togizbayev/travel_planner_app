@@ -16,6 +16,7 @@ public class User {
     private final String email;
     private String password;
 
+
     /**
      * Constructor of a new User object with the provided personal information.
      * @param firstName User's first name.
