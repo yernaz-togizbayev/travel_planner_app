@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#DEF0F7">
 
     <TextView
         android:id="@+id/textView12"
@@ -48,61 +49,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/termsWebsiteLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider6">
-
-        <TextView
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:text="Terms and Conditions"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="18dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="1dp"
-            app:srcCompat="@mipmap/right_arrow_foreground" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/privacyWebsiteLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/termsWebsiteLink"
-        app:layout_constraintTop_toBottomOf="@+id/termsWebsiteLink">
-
-        <TextView
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:text="Privacy Policy"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="18dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="1dp"
-            app:srcCompat="@mipmap/right_arrow_foreground" />
-
-    </LinearLayout>
+    <ExpandableListView
+        android:id="@+id/aboutExpandableList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp"
+        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+        app:layout_constraintBottom_toTopOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/divider6" />
 
     <View
         android:id="@+id/divider8"
