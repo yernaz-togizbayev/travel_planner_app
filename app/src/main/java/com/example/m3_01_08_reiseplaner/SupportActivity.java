@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SupportActivity extends AppCompatActivity {
 
+    /**
+     * Sets up the Screen, also sets the version text at the bottom of the screen.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +21,9 @@ public class SupportActivity extends AppCompatActivity {
         versionText.setText(MainMenuActivity.version);
     }
 
+    /**
+     * Handles the button press for going back to the Info-Screen.
+     */
     public void supportGoBackPress(View view){
         Intent infoScreen = new Intent(this, InfoActivity.class);
         startActivity(infoScreen);

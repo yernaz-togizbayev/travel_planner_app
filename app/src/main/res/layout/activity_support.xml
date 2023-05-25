@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#DEF0F7">
 
     <TextView
         android:id="@+id/textView19"
@@ -88,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:text="office@reiseplaner-app.at"
+            android:text="office@easytravel-app.at"
             android:textColor="#138FF1"
             android:textSize="16dp" />
 
@@ -122,7 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:text="reiseplaner-app.at"
+            android:text="easytravel-app.at"
             android:textColor="#138FF1"
             android:textSize="16dp" />
     </LinearLayout>
