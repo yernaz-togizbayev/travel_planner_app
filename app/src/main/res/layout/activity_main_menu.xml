@@ -8,9 +8,8 @@
     tools:context=".MainMenuActivity" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="408dp"
-        android:layout_height="685dp"
-        android:layout_marginTop="2dp"
+        android:layout_width="410dp"
+        android:layout_height="660dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomBarConstraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +19,7 @@
             android:id="@+id/travelsRecyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,8 +125,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBarConstraintLayout"
-        android:layout_width="412dp"
-        android:layout_height="124dp"
+        android:layout_width="411dp"
+        android:layout_height="152dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -135,13 +134,30 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="410dp"
-            android:layout_height="84dp"
+            android:layout_width="408dp"
+            android:layout_height="102dp"
             android:background="#A1CCED"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/signInGoback8"
+            android:layout_width="113dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            android:drawableLeft="@drawable/goback_icon"
+            android:drawableTint="#155FD4"
+            android:gravity="center"
+            android:onClick="logOutButtonPress"
+            android:text="Log Out"
+            android:textAlignment="textStart"
+            android:textColor="#155FD4"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -156,7 +172,8 @@
             android:textSize="48sp"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/toolbar" />
+            app:layout_constraintTop_toTopOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.621" />
 
         <ImageView
             android:id="@+id/imageView2"

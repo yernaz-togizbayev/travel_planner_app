@@ -19,9 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.m3_01_08_reiseplaner.converter.LocalDateConverter;
 import com.example.m3_01_08_reiseplaner.enums.ETravelPreference;
@@ -32,7 +30,6 @@ import com.example.m3_01_08_reiseplaner.inputValidation.PopUpMessage;
 import com.example.m3_01_08_reiseplaner.spinnerInputs.CountryList;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.TravelInformation;
 
-import java.io.InputStream;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -56,24 +53,91 @@ public class SearchTravelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_travel);
-        fillTheSpinners();
-        setUpCountryList();
+        setCountryList();
+        setUpDateListeners();
         setRadioButtons();
     }
 
 
-    private void setUpCountryList(){
+    /**
+     * All Date Texts get an dd.mm.yyyy mask
+     */
+    private void setUpDateListeners(){
+        EditText depatureDateText = findViewById(R.id.departureDateText);
+        EditText arrivalDateText = findViewById(R.id.returnDateText);
+        
+        addEventListenersToEditDateText(depatureDateText);
+        addEventListenersToEditDateText(arrivalDateText);
 
+    }
+
+
+    /**
+     * Adds listener to an EditText for a date, so that a point gets added atuomatically
+     * after dd and mm.
+     * @param dateTextWithListeners 
+     */
+    private void addEventListenersToEditDateText(EditText dateTextWithListeners){
+        dateTextWithListeners.addTextChangedListener(new TextWatcher() {
+            private boolean isFormatting;
+            private boolean deletingPoint;
+            private int pointStart;
+            private boolean deletingBackward;
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                deletingBackward = count > after;
+                if (deletingBackward && s.charAt(start) == '.') {
+                    deletingPoint = true;
+                    pointStart = start;
+                    return;
+                }
+
+                deletingPoint = false;
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                boolean biggerCount = before < count;
+                boolean checkPosition = (count - start == 2 || count - start == 5);
+                isFormatting = biggerCount && checkPosition;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (isFormatting) {
+                    isFormatting = false;
+                    return;
+                }
+
+                if (deletingPoint) {
+                    deletingPoint = false;
+                    s.delete(pointStart - 1, pointStart);
+
+                    return;
+                }
+
+                if (deletingBackward) {
+                    deletingBackward = false;
+
+                    return;
+                }
+
+                if (s.length() == 2 || s.length() == 5) {
+                    s.append('.');
+                }
+            }
+        });
     }
 
 
     /**
      * Fills both spinners with countryData.
      */
-    private void fillTheSpinners(){
+    private void setCountryList(){
         listOfCountries = CountryList.getCountryLists(this);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listOfCountries);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
     }
 
     private void setRadioButtons(){

@@ -177,6 +177,7 @@
         android:ems="10"
         android:hint="Departure Date (DD.MM.YYYY)"
         android:inputType="date"
+        android:maxLength="10"
         app:layout_constraintStart_toEndOf="@+id/departureDateButton"
         app:layout_constraintTop_toTopOf="@+id/departureDateButton" />
 
@@ -213,6 +214,7 @@
         android:ems="10"
         android:hint="Return Date (DD.MM.YYYY)"
         android:inputType="text"
+        android:maxLength="10"
         app:layout_constraintStart_toEndOf="@+id/returnDateButton"
         app:layout_constraintTop_toTopOf="@+id/returnDateButton" />
 
