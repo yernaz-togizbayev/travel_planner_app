@@ -8,6 +8,42 @@
     tools:context=".SearchTravelActivity">
 
     <TextView
+        android:id="@+id/depatureDropdown"
+        android:layout_width="323dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:drawable/editbox_background"
+        android:drawableEnd="@drawable/arrow_drop_down_menu"
+        android:ems="14"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:hint="Select country"
+        android:onClick="showCountryDepatureDropdownDialog"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/depatureCityText" />
+
+    <TextView
+        android:id="@+id/arrivalDropdown"
+        android:layout_width="328dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:drawable/editbox_background"
+        android:drawableEnd="@drawable/arrow_drop_down_menu"
+        android:ems="14"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:hint="Select country"
+        android:onClick="showCountryArrivalDropdownDialog"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.662"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/travelDestinationText" />
+
+    <TextView
         android:id="@+id/signInGoback"
         android:layout_width="113dp"
         android:layout_height="35dp"
@@ -26,28 +62,27 @@
 
     <EditText
         android:id="@+id/travelDestinationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="323dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
         android:ems="10"
         android:hint="City"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/depatureSpinner" />
+        app:layout_constraintTop_toTopOf="@+id/textView16" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="sans-serif-medium"
         android:text="To:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/depatureSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/depatureDropdown" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -114,7 +149,7 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="40dp"
         android:fontFamily="sans-serif-medium"
         android:text="From:"
@@ -124,22 +159,14 @@
 
     <EditText
         android:id="@+id/depatureCityText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="53dp"
         android:ems="10"
         android:hint="City"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toTopOf="@+id/textView11" />
-
-    <Spinner
-        android:id="@+id/depatureSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="53dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/depatureCityText" />
 
     <EditText
         android:id="@+id/departureDateText"
@@ -153,26 +180,16 @@
         app:layout_constraintStart_toEndOf="@+id/departureDateButton"
         app:layout_constraintTop_toTopOf="@+id/departureDateButton" />
 
-    <Spinner
-        android:id="@+id/travelDestinationSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="53dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/travelDestinationText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/travelDestinationText"
-        app:layout_constraintTop_toBottomOf="@+id/travelDestinationText" />
-
     <ImageButton
         android:id="@+id/departureDateButton"
         android:layout_width="49dp"
         android:layout_height="59dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="departureDateButton"
         android:onClick="onDepartureDateButtonPress"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/travelDestinationSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/arrivalDropdown"
         app:srcCompat="@drawable/calender_icon" />
 
     <ImageButton
