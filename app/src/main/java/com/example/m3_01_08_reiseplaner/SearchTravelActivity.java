@@ -6,11 +6,18 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,12 +48,22 @@ public class SearchTravelActivity extends AppCompatActivity {
 
     private static ETravelPreference lastChosenPreference = ETravelPreference.CHEAP;
 
+    List<String> listOfCountries = new ArrayList<String>();
+
+    Dialog countryDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_travel);
         fillTheSpinners();
+        setUpCountryList();
         setRadioButtons();
+    }
+
+
+    private void setUpCountryList(){
+
     }
 
 
@@ -54,13 +71,9 @@ public class SearchTravelActivity extends AppCompatActivity {
      * Fills both spinners with countryData.
      */
     private void fillTheSpinners(){
-        List<String> listOfCountries = CountryList.getCountryLists(this);
+        listOfCountries = CountryList.getCountryLists(this);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listOfCountries);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner depatureCountryDropdown = findViewById(R.id.depatureSpinner);
-        Spinner travelCountryDropdown = findViewById(R.id.travelDestinationSpinner);
-        depatureCountryDropdown.setAdapter(adapter);
-        travelCountryDropdown.setAdapter(adapter);
     }
 
     private void setRadioButtons(){
@@ -183,6 +196,67 @@ public class SearchTravelActivity extends AppCompatActivity {
 
     }
 
+    public void showCountryDepatureDropdownDialog(View view){
+        TextView depatureDropdown = findViewById(R.id.depatureDropdown);
+        showCountryDropdownDialog(view, depatureDropdown);
+    }
+
+    public void showCountryArrivalDropdownDialog(View view){
+        TextView arrivalDropdown = findViewById(R.id.arrivalDropdown);
+        showCountryDropdownDialog(view, arrivalDropdown);
+    }
+
+
+    /**
+     * Shows a new dialog of the countries as dropdown menu.
+     * This method is called when the country dropdown view is clicked.
+     * @param view The view that was clicked.
+     */
+    public void showCountryDropdownDialog(View view, TextView dropDown) {
+        countryDialog = new Dialog(this);
+        countryDialog.setContentView(R.layout.searchable_countries_dropdown_menu);
+        countryDialog.getWindow().setLayout(800, 1200);
+        countryDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        countryDialog.show();
+
+        EditText searchCountry = countryDialog.findViewById(R.id.SearchCountry);
+        ListView listViewOfCountries = countryDialog.findViewById(R.id.ListOfCountries);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listOfCountries);
+
+        listViewOfCountries.setAdapter(adapter);
+        searchCountry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        listViewOfCountries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                onCountryDropdownItemSelected(adapter.getItem(position), dropDown);
+            }
+        });
+    }
+
+    /**
+     * Handles the selection of a country from the dropdown.
+     * This method is called when a country is selected in the dialog.
+     * @param selectedItem The country selected from the dropdown.
+     */
+    private void onCountryDropdownItemSelected(String selectedItem, TextView countryDropDown) {
+        countryDropDown.setText(selectedItem);
+        countryDialog.dismiss();
+    }
+
+
     /**
      * Returns a Datastructure with all the given Information
      * @return
@@ -190,16 +264,16 @@ public class SearchTravelActivity extends AppCompatActivity {
      */
     private TravelInformation setTravelInformation() throws UnexpectedInputException {
         EditText depatureCityText = findViewById(R.id.depatureCityText);
-        Spinner depatureCountrySpinner = findViewById(R.id.depatureSpinner);
+        TextView depatureCountryView = findViewById(R.id.depatureDropdown);
         EditText travelDestinationCityText = findViewById(R.id.travelDestinationText);
-        Spinner travelDestinationCountrySpinner = findViewById(R.id.travelDestinationSpinner);
+        TextView travelDestinationView = findViewById(R.id.arrivalDropdown);
         EditText depatureDateText = findViewById(R.id.departureDateText);
         EditText returnDateText = findViewById(R.id.returnDateText);
 
         String depatureCity = depatureCityText.getText().toString();
-        String depatureCountry = (String) depatureCountrySpinner.getSelectedItem();
+        String depatureCountry = depatureCountryView.getText().toString();
         String travelDestinationCity = travelDestinationCityText.getText().toString();
-        String travelDestinationCountry = (String) travelDestinationCountrySpinner.getSelectedItem();
+        String travelDestinationCountry = travelDestinationView.getText().toString();
 
         String depatureDateString = depatureDateText.getText().toString();
         String returnDateString = returnDateText.getText().toString();
