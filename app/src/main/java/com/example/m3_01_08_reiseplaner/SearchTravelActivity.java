@@ -27,6 +27,7 @@ import com.example.m3_01_08_reiseplaner.exceptions.UnexpectedInputException;
 import com.example.m3_01_08_reiseplaner.inputValidation.DateValidation;
 import com.example.m3_01_08_reiseplaner.inputValidation.InputValidation;
 import com.example.m3_01_08_reiseplaner.inputValidation.PopUpMessage;
+import com.example.m3_01_08_reiseplaner.listeners.AddDateListeners;
 import com.example.m3_01_08_reiseplaner.spinnerInputs.CountryList;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.TravelInformation;
 
@@ -66,70 +67,13 @@ public class SearchTravelActivity extends AppCompatActivity {
         EditText depatureDateText = findViewById(R.id.departureDateText);
         EditText arrivalDateText = findViewById(R.id.returnDateText);
         
-        addEventListenersToEditDateText(depatureDateText);
-        addEventListenersToEditDateText(arrivalDateText);
+        AddDateListeners.addEventListenersToEditDateText(depatureDateText);
+        AddDateListeners.addEventListenersToEditDateText(arrivalDateText);
 
     }
 
 
-    /**
-     * Adds listener to an EditText for a date, so that a point gets added atuomatically
-     * after dd and mm.
-     * @param dateTextWithListeners 
-     */
-    private void addEventListenersToEditDateText(EditText dateTextWithListeners){
-        dateTextWithListeners.addTextChangedListener(new TextWatcher() {
-            private boolean isFormatting;
-            private boolean deletingPoint;
-            private int pointStart;
-            private boolean deletingBackward;
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                deletingBackward = count > after;
-                if (deletingBackward && s.charAt(start) == '.') {
-                    deletingPoint = true;
-                    pointStart = start;
-                    return;
-                }
-
-                deletingPoint = false;
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                boolean biggerCount = before < count;
-                boolean checkPosition = (count - start == 2 || count - start == 5);
-                isFormatting = biggerCount && checkPosition;
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (isFormatting) {
-                    isFormatting = false;
-                    return;
-                }
-
-                if (deletingPoint) {
-                    deletingPoint = false;
-                    s.delete(pointStart - 1, pointStart);
-
-                    return;
-                }
-
-                if (deletingBackward) {
-                    deletingBackward = false;
-
-                    return;
-                }
-
-                if (s.length() == 2 || s.length() == 5) {
-                    s.append('.');
-                }
-            }
-        });
-    }
 
 
     /**

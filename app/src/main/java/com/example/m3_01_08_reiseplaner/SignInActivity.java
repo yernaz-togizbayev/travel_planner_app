@@ -30,6 +30,7 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signin);
     }
 
+
     /**
      * Handles the button press to go back from the sign in screen to the start screen.
      * @param view The button that was pressed by the user.
