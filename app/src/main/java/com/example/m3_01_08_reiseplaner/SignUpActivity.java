@@ -23,6 +23,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.m3_01_08_reiseplaner.listeners.AddDateListeners;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,6 +70,16 @@ public class SignUpActivity extends AppCompatActivity {
         setCountriesDropDownMenu();
 
         initializeCalendarLauncher();
+        addListenerToDateField();
+    }
+
+    /**
+     * Adds listeners to the Date Field
+     */
+    private void addListenerToDateField(){
+        EditText birthDateText = findViewById(R.id.DateOfBirthEditText);
+
+        AddDateListeners.addEventListenersToEditDateText(birthDateText);
     }
 
     /**
