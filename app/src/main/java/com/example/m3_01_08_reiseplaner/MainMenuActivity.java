@@ -44,6 +44,11 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(settingsIntent);
     }
 
+    public void  logOutButtonPress(View view){
+        Intent logOutIntent = new Intent(this, StartScreenActivity.class);
+        startActivity(logOutIntent);
+    }
+
     /**
      * Initializes the Activity with everything needed when opening this activity
      */
