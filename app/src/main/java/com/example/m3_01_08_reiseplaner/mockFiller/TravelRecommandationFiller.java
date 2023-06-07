@@ -70,9 +70,10 @@ public class TravelRecommandationFiller {
         TravelRecommendation travelThree = new TravelRecommendation(ship, information, travelThreeDepatureTime, travelThreeReturnTime, travelThreePrice, travelThreeDuration);
 
 
+        recommendations.add(travelThree);
         recommendations.add(travelOne);
         recommendations.add(travelTwo);
-        recommendations.add(travelThree);
+
 
         return recommendations;
     }
@@ -150,9 +151,10 @@ public class TravelRecommandationFiller {
         TravelRecommendation travelThree = new TravelRecommendation(bus, information, travelThreeDepatureTime, travelThreeReturnTime, travelThreePrice, travelThreeDuration);
 
 
+        recommendations.add(travelThree);
         recommendations.add(travelOne);
         recommendations.add(travelTwo);
-        recommendations.add(travelThree);
+
 
         return recommendations;
     }

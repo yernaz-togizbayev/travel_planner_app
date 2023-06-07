@@ -36,7 +36,7 @@ public class SignInActivity extends AppCompatActivity {
      * @param view The button that was pressed by the user.
      */
     public void SignInGoBackPress(View view) {
-        Intent intent = new Intent(SignInActivity.this, MainMenuActivity.class);
+        Intent intent = new Intent(SignInActivity.this, StartScreenActivity.class);
         startActivity(intent);
     }
 
