@@ -92,7 +92,7 @@
                 android:layout_height="45dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Event Name XY in XY Days"
-                android:textSize="22sp"
+                android:textSize="21sp"
                 app:layout_constraintStart_toStartOf="@+id/textView13"
                 app:layout_constraintTop_toBottomOf="@+id/textView13" />
 

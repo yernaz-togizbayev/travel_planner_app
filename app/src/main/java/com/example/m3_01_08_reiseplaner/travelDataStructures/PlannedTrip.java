@@ -39,7 +39,7 @@ public class PlannedTrip implements Comparable<PlannedTrip> {
         this.recommendation = recommendation;
 
         //TODO: Change bool to false before handing it in final
-        pictureUrl = UnsplashAPI.getCountryPictureURL(tripDestinationCountry, true);
+        pictureUrl = UnsplashAPI.getCountryPictureURL(tripDestinationCountry, false);
     }
 
     /**
@@ -67,7 +67,7 @@ public class PlannedTrip implements Comparable<PlannedTrip> {
             return "Next Event is " + eventName;
         }
 
-        return eventName + "  at: " + eventDate + ", " + eventTime + " o'clock";
+        return eventName + " at: " + eventDate + ", " + eventTime;
     }
 
     /**

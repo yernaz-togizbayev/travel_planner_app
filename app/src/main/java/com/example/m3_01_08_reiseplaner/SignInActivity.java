@@ -37,7 +37,7 @@ public class SignInActivity extends AppCompatActivity {
      */
     public void SignInGoBackPress(View view) {
         //change back please
-        Intent intent = new Intent(SignInActivity.this, MainMenuActivity.class);
+        Intent intent = new Intent(SignInActivity.this, StartScreenActivity.class);
         startActivity(intent);
     }
 
