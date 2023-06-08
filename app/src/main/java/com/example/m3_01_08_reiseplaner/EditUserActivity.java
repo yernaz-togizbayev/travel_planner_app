@@ -31,6 +31,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class EditUserActivity extends AppCompatActivity {
     private Spinner countryDropDown; // drop-down menu for selecting the country
@@ -104,6 +105,8 @@ public class EditUserActivity extends AppCompatActivity {
         String password = ((EditText) findViewById(R.id.SignupPasswordEditText)).getText().toString();
         String confirmPassword = ((EditText) findViewById(R.id.SignupConfirmPasswordEditText)).getText().toString();
 
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
         if (firstName.isEmpty()) {
             showPopupMessage(
                     "Please enter a name!",
@@ -127,6 +130,12 @@ public class EditUserActivity extends AppCompatActivity {
         else if (!isEmailValid(email)){
             showPopupMessage(
                     "User with this email has already been registered. Please use another email.",
+                    Color.parseColor("#eea29e"));
+        }
+        else if (!Pattern.matches(emailPattern, email)) {
+            showPopupMessage(
+                    "Email not valid. Please enter an email in " +
+                            "correct format (e.g. xyz@example.com)",
                     Color.parseColor("#eea29e"));
         }
         else {
