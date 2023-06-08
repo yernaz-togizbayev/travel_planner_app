@@ -81,7 +81,7 @@
         android:inputType="text"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TimeEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/TimePicker" />
 
     <EditText
         android:id="@+id/StreetEditText2"
@@ -113,8 +113,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RegionEditText" />
 
-    <EditText
-        android:id="@+id/TimeEditText"
+    <TextView
+        android:id="@+id/TimePicker"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginTop="80dp"
@@ -123,6 +123,7 @@
         android:ems="10"
         android:hint="Time"
         android:inputType="time"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/preferedIcon" />
 

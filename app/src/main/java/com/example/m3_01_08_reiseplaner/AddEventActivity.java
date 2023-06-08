@@ -1,8 +1,8 @@
 package com.example.m3_01_08_reiseplaner;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -24,7 +25,9 @@ import com.example.m3_01_08_reiseplaner.listeners.AddDateListeners;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 public class AddEventActivity extends AppCompatActivity {
     static List<Event> events = new ArrayList<>();
@@ -36,6 +39,8 @@ public class AddEventActivity extends AppCompatActivity {
 
     private static final String INTENT_KEY_CALENDER = "CalendarKey";
 
+    private TextView timePicker;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,14 @@ public class AddEventActivity extends AppCompatActivity {
         ImageView im = findViewById(R.id.preferedIcon);
         im.setImageResource(currentIcon);
         addListenerToDateField();
+
+        timePicker = findViewById(R.id.TimePicker);
+        timePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTimePicker();
+            }
+        });
     }
 
     /**
@@ -75,7 +88,7 @@ public class AddEventActivity extends AppCompatActivity {
         TextView eventDate = findViewById(R.id.DateEditText);
         TextView eventRegion = findViewById(R.id.RegionEditText);
         TextView eventStreet = findViewById(R.id.StreetEditText);
-        TextView eventTime = findViewById(R.id.TimeEditText);
+        TextView eventTime = findViewById(R.id.TimePicker);
         TextView eventPostalCode = findViewById(R.id.PostalCodeEditText);
         TextView eventHouseNumber = findViewById(R.id.HouseNumberEditText);
 
@@ -122,7 +135,7 @@ public class AddEventActivity extends AppCompatActivity {
         TextView eventDate = findViewById(R.id.DateEditText);
         TextView eventRegion = findViewById(R.id.RegionEditText);
         TextView eventStreet = findViewById(R.id.StreetEditText);
-        TextView eventTime = findViewById(R.id.TimeEditText);
+        TextView eventTime = findViewById(R.id.TimePicker);
         TextView eventPostalCode = findViewById(R.id.PostalCodeEditText);
         TextView eventHouseNumber = findViewById(R.id.HouseNumberEditText);
 
@@ -161,7 +174,7 @@ public class AddEventActivity extends AppCompatActivity {
         TextView eventDate = findViewById(R.id.DateEditText);
         TextView eventRegion = findViewById(R.id.RegionEditText);
         TextView eventStreet = findViewById(R.id.StreetEditText);
-        TextView eventTime = findViewById(R.id.TimeEditText);
+        TextView eventTime = findViewById(R.id.TimePicker);
         TextView eventPostalCode = findViewById(R.id.PostalCodeEditText);
         TextView eventHouseNumber = findViewById(R.id.HouseNumberEditText);
 
@@ -252,6 +265,48 @@ public class AddEventActivity extends AppCompatActivity {
         setReturnDateResult.launch(departureDateCalendarIntent);
     }
 
+    /**
+     * Opens the time picker dialog to pick a time.
+     * Retrieves the current time and displays the time picker dialog.
+     */
+    public void openTimePicker() {
+        TimeZone myTimeZone = TimeZone.getDefault();
+        final Calendar calendar = Calendar.getInstance(myTimeZone);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
 
+        showTimePickerDialog(hour, minute);
+    }
 
+    /**
+     * Shows the time picker dialog with the specified initial hour and minute.
+     * Sets the selected time when the user confirms the selection.
+     *
+     * @param hour   The initial hour to display in the time picker.
+     * @param minute The initial minute to display in the time picker.
+     */
+    private void showTimePickerDialog(int hour, int minute) {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(AddEventActivity.this,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int h, int min) {
+                        setTime(h, min);
+                    }
+                }, hour, minute, false);
+
+        timePickerDialog.show();
+    }
+
+    /**
+     * Sets the selected time in the time picker TextView.
+     * Formats the hour and minute with leading zeros if necessary.
+     *
+     * @param h   The selected hour.
+     * @param min The selected minute.
+     */
+    private void setTime(int h, int min) {
+        String formattedHour = String.format("%02d", h);
+        String formattedMinute = String.format("%02d", min);
+        timePicker.setText(formattedHour + ":" + formattedMinute );
+    }
 }
