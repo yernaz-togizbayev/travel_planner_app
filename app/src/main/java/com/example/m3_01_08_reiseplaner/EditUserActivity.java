@@ -161,8 +161,11 @@ public class EditUserActivity extends AppCompatActivity {
                             Color.parseColor("#eea29e"));
                 }
             } else {
-                showPopupMessage(
-                        "Invalid password. Please make sure that password meets all the requirements.",
+                showPopupMessage( "Invalid password. Password must:\n" +
+                                "\t* contain at least 1 uppercase letter\n" +
+                                "\t* contain at least 1 lowercase letter\n" +
+                                "\t* contain at least 1 digit\n" +
+                                "\t* be a minimum of 6 characters in length",
                         Color.parseColor("#eea29e"));
             }
         }
