@@ -48,6 +48,7 @@
                 android:layout_height="32dp"
                 android:layout_marginStart="44dp"
                 android:layout_marginTop="40dp"
+                android:backgroundTint="#094AB1"
                 android:textColor="@color/white"
                 android:textColorHighlight="#880606"
                 android:textColorLink="#BD2F2F"
@@ -77,21 +78,22 @@
 
             <ImageButton
                 android:id="@+id/editButtonEventOverview5"
-                android:layout_width="48dp"
-                android:layout_height="32dp"
+                android:layout_width="57dp"
+                android:layout_height="41dp"
                 android:layout_marginStart="284dp"
                 android:layout_marginTop="60dp"
+                android:backgroundTint="#EC7070"
                 android:onClick="deleteButton1Pressed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/ic_menu_delete" />
+                app:srcCompat="@drawable/ic_delete" />
 
             <ImageView
                 android:id="@+id/dateImage5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="204dp"
-                android:layout_marginTop="68dp"
+                android:layout_marginStart="192dp"
+                android:layout_marginTop="60dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@android:drawable/stat_notify_sync" />
