@@ -20,7 +20,11 @@ import com.example.m3_01_08_reiseplaner.staticDataStorer.StoredTravels;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.PlannedTrip;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class EventViewHolder extends RecyclerView.Adapter<EventViewHolder.EventsDataHolder> {

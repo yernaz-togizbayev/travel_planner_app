@@ -19,6 +19,7 @@ import com.example.m3_01_08_reiseplaner.EventOverviewActivity;
 import com.example.m3_01_08_reiseplaner.MainMenuActivity;
 import com.example.m3_01_08_reiseplaner.R;
 import com.example.m3_01_08_reiseplaner.UpdatedEventOverviewActivity;
+import com.example.m3_01_08_reiseplaner.inputValidation.PopUpMessage;
 import com.example.m3_01_08_reiseplaner.staticDataStorer.StoredTravels;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.PlannedTrip;
 import com.squareup.picasso.Picasso;
@@ -164,6 +165,9 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
                         @Override
                         public void onDelete() {
 
+                            String successfullDeletionMesssage = "Travel to " + chosenTrip.getTripDestinationCountry() +
+                                    " was successfully deleted!";
+                            PopUpMessage.showAcceptPopUpMessage(successfullDeletionMesssage, context);
                             StoredTravels.removeTrip(chosenTrip);
                             Intent intent = new Intent(context, MainMenuActivity.class);
                             context.startActivity(intent);
