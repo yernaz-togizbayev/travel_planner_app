@@ -21,8 +21,7 @@ public class ChooseIconActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AddEventActivity.setCurrentIcon(R.drawable.museumicon);
-                Intent intent = new Intent(ChooseIconActivity.this, AddEventActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -31,8 +30,7 @@ public class ChooseIconActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AddEventActivity.setCurrentIcon(R.drawable.house_50);
-                Intent intent = new Intent(ChooseIconActivity.this, AddEventActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -40,9 +38,8 @@ public class ChooseIconActivity extends AppCompatActivity {
         icon3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddEventActivity.setCurrentIcon(R.drawable.eiffel_tower_50);
-                Intent intent = new Intent(ChooseIconActivity.this, AddEventActivity.class);
-                startActivity(intent);
+                AddEventActivity.setCurrentIcon(R.drawable.icons8_forest_50);
+                finish();
             }
         });
 
@@ -51,8 +48,7 @@ public class ChooseIconActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AddEventActivity.setCurrentIcon(R.drawable.dining_room_50);
-                Intent intent = new Intent(ChooseIconActivity.this, AddEventActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
