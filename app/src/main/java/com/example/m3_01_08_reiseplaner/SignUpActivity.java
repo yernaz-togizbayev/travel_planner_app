@@ -19,7 +19,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +38,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * The SignUpActivity class is responsible for handling user sign-up functionality.
@@ -119,6 +119,12 @@ public class SignUpActivity extends AppCompatActivity {
         else if (email.isEmpty()) {
             showSignUpPopupMessage(
                     "Please enter an email!",
+                    Color.parseColor("#eea29e"));
+        }
+        else if (!isEmailValid(email)) {
+            showSignUpPopupMessage(
+                    "Email not valid. Please enter an email in " +
+                            "correct format (e.g. xyz@example.com",
                     Color.parseColor("#eea29e"));
         }
         else if (password.isEmpty()) {
@@ -359,7 +365,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     /**
-     * Function to check if a password is valid. It checks that the password
+     * Method to check if a password is valid. It checks that the password
      * has at least 1 uppercase letter, 1 lowercase letter und 1 digit.
      * @param password The password to validate.
      * @return True if the password is valid, false otherwise.
@@ -385,6 +391,18 @@ public class SignUpActivity extends AppCompatActivity {
 
         return hasUppercaseLetter && hasLowercaseLetter && hasDigit;
     }
+
+    /**
+     * Method to check if an email is valid. Using Java built-in regex it checks
+     * that the email has been provided in correct form. For example, xyz@example.com
+     * @param email An email to validate.
+     * @return True if the email is valid, false otherwise.
+     */
+    private boolean isEmailValid(String email) {
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        return Pattern.matches(emailPattern, email);
+    }
+
 
     /**
      * Function to display a popup message with text and background color.
