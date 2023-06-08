@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.m3_01_08_reiseplaner.MainMenuActivity;
 import com.example.m3_01_08_reiseplaner.R;
 import com.example.m3_01_08_reiseplaner.enums.ETransportation;
+import com.example.m3_01_08_reiseplaner.inputValidation.PopUpMessage;
 import com.example.m3_01_08_reiseplaner.staticDataStorer.StoredTravels;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.PlannedTrip;
 import com.example.m3_01_08_reiseplaner.travelDataStructures.TravelRecommendation;
@@ -161,7 +162,14 @@ public class TravelRecommendationRecycleViewAdapter extends RecyclerView.Adapter
                         Log.w(TAG, "NO POSITION");
                         return;
                     }
+
+
+
                     TravelRecommendation chosenRecommendation = recommendations.get(position);
+
+                    String bookedMessage = "Travel to " + chosenRecommendation.getInformation().getDestinationCountry() +
+                            " was successfully booked!";
+                    PopUpMessage.showAcceptPopUpMessage(bookedMessage, context);
 
                     Log.d(TAG, chosenRecommendation.toString());
 
