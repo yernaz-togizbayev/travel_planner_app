@@ -124,7 +124,7 @@ public class SignUpActivity extends AppCompatActivity {
         else if (!isEmailValid(email)) {
             showSignUpPopupMessage(
                     "Email not valid. Please enter an email in " +
-                            "correct format (e.g. xyz@example.com",
+                            "correct format (e.g. xyz@example.com)",
                     Color.parseColor("#eea29e"));
         }
         else if (password.isEmpty()) {
