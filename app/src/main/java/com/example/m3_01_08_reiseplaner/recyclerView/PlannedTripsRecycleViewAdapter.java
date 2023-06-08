@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.m3_01_08_reiseplaner.Dialog.ConfirmDeletionDialog;
 import com.example.m3_01_08_reiseplaner.EventOverviewActivity;
 import com.example.m3_01_08_reiseplaner.MainMenuActivity;
 import com.example.m3_01_08_reiseplaner.R;
@@ -78,6 +79,10 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
         holder.cityTextView.setText(currentTravel.getTripDestinationCity());
         holder.daysTillTravelTextView.setText(currentTravel.getDaysTillTravelStart());
         holder.nextEventTextView.setText(currentTravel.getFirstEvent());
+
+    }
+
+    public void showConfirmationDeletionDialog(int position){
 
     }
 
@@ -151,11 +156,34 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
                     }
 
                     PlannedTrip chosenTrip = plannedTrips.get(position);
+                    String deletionMessage = "Are you sure you want to delete your travel to " + chosenTrip.getTripDestinationCity() + ", "+ chosenTrip.getTripDestinationCountry() + "?";
+
+                    ConfirmDeletionDialog dialog = new ConfirmDeletionDialog(context, deletionMessage);
+
+                    dialog.setConfirmDeletionListener(new ConfirmDeletionDialog.IConfirmDeletionListener() {
+                        @Override
+                        public void onDelete() {
+
+                            StoredTravels.removeTrip(chosenTrip);
+                            Intent intent = new Intent(context, MainMenuActivity.class);
+                            context.startActivity(intent);
+                        }
+
+                        @Override
+                        public void onCancel() {
+
+                        }
+                    });
+
+                    dialog.show();
+
+                    /**
                     StoredTravels.removeTrip(chosenTrip);
 
 
                     Intent intent = new Intent(context, MainMenuActivity.class);
                     context.startActivity(intent);
+                     **/
 
                 }
             });
