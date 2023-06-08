@@ -9,9 +9,10 @@
 
     <TextView
         android:id="@+id/depatureDropdown"
-        android:layout_width="323dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="10dp"
         android:background="@android:drawable/editbox_background"
         android:drawableEnd="@drawable/arrow_drop_down_menu"
         android:ems="14"
@@ -20,16 +21,15 @@
         android:hint="Select country"
         android:onClick="showCountryDepatureDropdownDialog"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/depatureCityText" />
 
     <TextView
         android:id="@+id/arrivalDropdown"
-        android:layout_width="328dp"
+        android:layout_width="320dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="10dp"
         android:background="@android:drawable/editbox_background"
         android:drawableEnd="@drawable/arrow_drop_down_menu"
         android:ems="14"
@@ -38,8 +38,6 @@
         android:hint="Select country"
         android:onClick="showCountryArrivalDropdownDialog"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.662"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/travelDestinationText" />
 
@@ -62,15 +60,17 @@
 
     <EditText
         android:id="@+id/travelDestinationText"
-        android:layout_width="323dp"
+        android:layout_width="320dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:drawable/editbox_background"
         android:ems="10"
         android:hint="City"
         android:inputType="text"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toTopOf="@+id/textView16" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/depatureDropdown" />
 
     <TextView
         android:id="@+id/textView16"
@@ -95,7 +95,7 @@
 
         <RadioButton
             android:id="@+id/ecoRadioButton"
-            android:layout_width="143dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
             android:text="Eco"
@@ -104,7 +104,7 @@
 
         <RadioButton
             android:id="@+id/fastRadioButton"
-            android:layout_width="139dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
             android:text="Fast"
@@ -113,7 +113,7 @@
 
         <RadioButton
             android:id="@+id/cheapRadioButton"
-            android:layout_width="115dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="sans-serif-medium"
@@ -160,33 +160,37 @@
     <EditText
         android:id="@+id/depatureCityText"
         android:layout_width="320dp"
-        android:layout_height="53dp"
-        android:ems="10"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="14"
         android:hint="City"
         android:inputType="text"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toTopOf="@+id/textView11" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
     <EditText
         android:id="@+id/departureDateText"
-        android:layout_width="256dp"
-        android:layout_height="62dp"
+        android:layout_width="265dp"
+        android:layout_height="50dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:drawable/editbox_background"
         android:ems="10"
         android:hint="Departure Date (DD.MM.YYYY)"
         android:inputType="date"
         android:maxLength="10"
         app:layout_constraintStart_toEndOf="@+id/departureDateButton"
-        app:layout_constraintTop_toTopOf="@+id/departureDateButton" />
+        app:layout_constraintTop_toBottomOf="@+id/arrivalDropdown" />
 
     <ImageButton
         android:id="@+id/departureDateButton"
-        android:layout_width="49dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
         android:contentDescription="departureDateButton"
         android:onClick="onDepartureDateButtonPress"
         app:layout_constraintStart_toStartOf="parent"
@@ -195,10 +199,10 @@
 
     <ImageButton
         android:id="@+id/returnDateButton"
-        android:layout_width="49dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="15dp"
         android:contentDescription="returnDateButton"
         android:onClick="onReturnDateButtonPress"
         app:layout_constraintStart_toStartOf="parent"
@@ -207,23 +211,24 @@
 
     <EditText
         android:id="@+id/returnDateText"
-        android:layout_width="257dp"
-        android:layout_height="62dp"
+        android:layout_width="265dp"
+        android:layout_height="50dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="15dp"
+        android:background="@android:drawable/editbox_background"
         android:ems="10"
         android:hint="Return Date (DD.MM.YYYY)"
         android:inputType="date"
         android:maxLength="10"
         app:layout_constraintStart_toEndOf="@+id/returnDateButton"
-        app:layout_constraintTop_toTopOf="@+id/returnDateButton" />
+        app:layout_constraintTop_toBottomOf="@+id/departureDateText" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-medium"
         android:text="Choose Priority:"
         android:textSize="20sp"
@@ -234,7 +239,7 @@
         android:id="@+id/button"
         android:layout_width="354dp"
         android:layout_height="71dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#094AB1"
         android:fontFamily="sans-serif-medium"
         android:onClick="onTravelSearchButtonPress"
