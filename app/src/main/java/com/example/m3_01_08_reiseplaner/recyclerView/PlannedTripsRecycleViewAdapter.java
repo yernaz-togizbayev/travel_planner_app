@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.m3_01_08_reiseplaner.Dialog.ConfirmDeletionDialog;
 import com.example.m3_01_08_reiseplaner.EventOverviewActivity;
 import com.example.m3_01_08_reiseplaner.MainMenuActivity;
 import com.example.m3_01_08_reiseplaner.R;
@@ -81,6 +82,10 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
 
     }
 
+    public void showConfirmationDeletionDialog(int position){
+
+    }
+
     @Override
     public int getItemCount() {
         return plannedTrips.size();
@@ -132,9 +137,9 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
                     PlannedTrip chosenTrip = plannedTrips.get(position);
 
 
-                    EventOverviewActivity.setEvents(EventOverviewActivity.getEventMap().get(chosenTrip.getId()));
-                    EventOverviewActivity.setId(chosenTrip.getId());
-                    EventOverviewActivity.setDestination(chosenTrip.getTripDestinationCity());
+                    UpdatedEventOverviewActivity.setEvents(UpdatedEventOverviewActivity.getEventMap().get(chosenTrip.getId()));
+                    UpdatedEventOverviewActivity.setId(chosenTrip.getId());
+                    UpdatedEventOverviewActivity.setDestination(chosenTrip.getTripDestinationCity());
 
                     Intent intent = new Intent(context, UpdatedEventOverviewActivity.class);
                     context.startActivity(intent);
@@ -151,11 +156,27 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
                     }
 
                     PlannedTrip chosenTrip = plannedTrips.get(position);
-                    StoredTravels.removeTrip(chosenTrip);
+                    String deletionMessage = "Are you sure you want to delete your travel to " + chosenTrip.getTripDestinationCity() + ", "+ chosenTrip.getTripDestinationCountry() + "?";
 
+                    ConfirmDeletionDialog dialog = new ConfirmDeletionDialog(context, deletionMessage);
 
-                    Intent intent = new Intent(context, MainMenuActivity.class);
-                    context.startActivity(intent);
+                    dialog.setConfirmDeletionListener(new ConfirmDeletionDialog.IConfirmDeletionListener() {
+                        @Override
+                        public void onDelete() {
+
+                            StoredTravels.removeTrip(chosenTrip);
+                            Intent intent = new Intent(context, MainMenuActivity.class);
+                            context.startActivity(intent);
+                        }
+
+                        @Override
+                        public void onCancel() {
+
+                        }
+                    });
+
+                    dialog.show();
+
 
                 }
             });
