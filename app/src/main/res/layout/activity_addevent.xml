@@ -10,6 +10,18 @@
     android:onClick="goBackAddEvent"
     tools:context="@tools:sample/date/ddmmyy">
 
+    <ImageButton
+        android:id="@+id/departureDateButton2"
+        android:layout_width="38dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="424dp"
+        android:contentDescription="eventDateButton"
+        android:onClick="onEventDateButtonPress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/calender_icon" />
+
     <TextView
         android:id="@+id/EventAddGoBack"
         android:layout_width="wrap_content"
@@ -117,13 +129,14 @@
 
     <EditText
         android:id="@+id/DateEditText"
-        android:layout_width="141dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="44dp"
+        android:layout_width="106dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="84dp"
         android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Date"
         android:inputType="date"
+        android:maxLength="10"
         app:layout_constraintBottom_toTopOf="@+id/RegionEditText"
         app:layout_constraintStart_toStartOf="parent" />
 

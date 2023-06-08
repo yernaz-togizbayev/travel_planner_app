@@ -17,9 +17,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/travelsRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="24dp"
+            android:layout_width="411dp"
+            android:layout_height="591dp"
+            android:layout_marginBottom="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -125,8 +125,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBarConstraintLayout"
-        android:layout_width="411dp"
-        android:layout_height="152dp"
+        android:layout_width="413dp"
+        android:layout_height="162dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
