@@ -213,7 +213,7 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Return Date (DD.MM.YYYY)"
-        android:inputType="text"
+        android:inputType="date"
         android:maxLength="10"
         app:layout_constraintStart_toEndOf="@+id/returnDateButton"
         app:layout_constraintTop_toTopOf="@+id/returnDateButton" />

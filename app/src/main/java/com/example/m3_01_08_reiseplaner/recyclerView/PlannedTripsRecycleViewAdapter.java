@@ -137,9 +137,9 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
                     PlannedTrip chosenTrip = plannedTrips.get(position);
 
 
-                    EventOverviewActivity.setEvents(EventOverviewActivity.getEventMap().get(chosenTrip.getId()));
-                    EventOverviewActivity.setId(chosenTrip.getId());
-                    EventOverviewActivity.setDestination(chosenTrip.getTripDestinationCity());
+                    UpdatedEventOverviewActivity.setEvents(UpdatedEventOverviewActivity.getEventMap().get(chosenTrip.getId()));
+                    UpdatedEventOverviewActivity.setId(chosenTrip.getId());
+                    UpdatedEventOverviewActivity.setDestination(chosenTrip.getTripDestinationCity());
 
                     Intent intent = new Intent(context, UpdatedEventOverviewActivity.class);
                     context.startActivity(intent);
@@ -177,13 +177,6 @@ public class PlannedTripsRecycleViewAdapter  extends RecyclerView.Adapter<Planne
 
                     dialog.show();
 
-                    /**
-                    StoredTravels.removeTrip(chosenTrip);
-
-
-                    Intent intent = new Intent(context, MainMenuActivity.class);
-                    context.startActivity(intent);
-                     **/
 
                 }
             });
