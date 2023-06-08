@@ -67,7 +67,7 @@
         android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/Icon1"
-        app:srcCompat="@drawable/eiffel_tower_50" />
+        app:srcCompat="@drawable/icons8_forest_50" />
 
     <ImageView
         android:id="@+id/Icon4"
