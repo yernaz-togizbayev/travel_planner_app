@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.m3_01_08_reiseplaner.converter.LocalDateConverter;
+import com.example.m3_01_08_reiseplaner.listeners.AddDateListeners;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -42,6 +43,16 @@ public class AddEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addevent);
         ImageView im = findViewById(R.id.preferedIcon);
         im.setImageResource(currentIcon);
+        addListenerToDateField();
+    }
+
+    /**
+     * Adds listeners to the Date Field
+     */
+    private void addListenerToDateField(){
+        EditText dateEditText = findViewById(R.id.DateEditText);
+
+        AddDateListeners.addEventListenersToEditDateText(dateEditText);
     }
 
     public void addEventButtonPress(View view){
