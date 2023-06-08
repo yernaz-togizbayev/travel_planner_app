@@ -12,14 +12,14 @@
 
     <ImageButton
         android:id="@+id/departureDateButton2"
-        android:layout_width="38dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="424dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="78dp"
         android:contentDescription="eventDateButton"
         android:onClick="onEventDateButtonPress"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preferedIcon"
         app:srcCompat="@drawable/calender_icon" />
 
     <TextView
@@ -40,105 +40,107 @@
 
     <EditText
         android:id="@+id/EventNameEditText"
-        android:layout_width="275dp"
+        android:layout_width="320dp"
         android:layout_height="48dp"
         android:layout_marginTop="148dp"
+        android:background="@android:drawable/editbox_background"
         android:drawableTint="#808080"
         android:ems="14"
         android:hint="Event Name"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.61"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/RegionEditText"
-        android:layout_width="143dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="484dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:drawable/editbox_background"
         android:drawableTint="#808080"
-        android:ems="14"
+        android:ems="10"
         android:hint="Region"
         android:inputType="text"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/StreetEditText2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/DateEditText" />
 
     <EditText
         android:id="@+id/PostalCodeEditText"
-        android:layout_width="143dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:drawable/editbox_background"
         android:drawableTint="#808080"
         android:ems="14"
         android:hint="Postal Code"
         android:inputType="text"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.94"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TimeEditText" />
 
     <EditText
         android:id="@+id/StreetEditText2"
-        android:layout_width="143dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="548dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:drawable/editbox_background"
         android:drawableTint="#808080"
         android:ems="14"
         android:hint="Street"
         android:inputType="text"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/RegionEditText" />
 
     <EditText
         android:id="@+id/HouseNumberEditText"
-        android:layout_width="143dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="544dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:drawable/editbox_background"
         android:drawableTint="#808080"
         android:ems="14"
-        android:hint="House Number"
+        android:hint="House Nr."
         android:inputType="text"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.94"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/RegionEditText" />
 
     <EditText
         android:id="@+id/TimeEditText"
-        android:layout_width="147dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="420dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:drawable/editbox_background"
         android:ems="10"
         android:hint="Time"
         android:inputType="time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/preferedIcon" />
 
     <EditText
         android:id="@+id/DateEditText"
-        android:layout_width="106dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="80dp"
+        android:background="@android:drawable/editbox_background"
         android:ems="10"
-        android:hint="Date"
+        android:hint="Date(DD.MM.YYYY)"
         android:inputType="date"
         android:maxLength="10"
-        app:layout_constraintBottom_toTopOf="@+id/RegionEditText"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/departureDateButton2"
+        app:layout_constraintTop_toBottomOf="@+id/preferedIcon" />
 
     <ImageView
         android:id="@+id/preferedIcon"
@@ -152,15 +154,17 @@
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="160dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginTop="25dp"
         android:clickable="true"
         android:onClick="addEventButtonPress"
-        android:text="save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="SAVE"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StreetEditText2" />
 
     <Button
         android:id="@+id/chooseIconButton"
@@ -169,7 +173,8 @@
         android:layout_marginTop="76dp"
         android:layout_marginEnd="96dp"
         android:onClick="chooseIconButtonPress"
-        android:text="choose Icon"
+        android:text="Choose Icon"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EventNameEditText" />
 
