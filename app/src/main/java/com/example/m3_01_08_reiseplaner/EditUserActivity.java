@@ -22,6 +22,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.m3_01_08_reiseplaner.listeners.AddDateListeners;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -92,6 +94,18 @@ public class EditUserActivity extends AppCompatActivity {
         emailView.setText(currentUser.getEmail());
         passwordView.setText(currentUser.getPassword());
         confirmPasswordView.setText(currentUser.getPassword());
+
+        addListenerToDateField();
+    }
+
+
+
+    /**
+     * Adds listeners to the Date Field
+     */
+    private void addListenerToDateField(){
+        EditText dateOfBirthView = findViewById(R.id.DateOfBirthEditText);
+        AddDateListeners.addEventListenersToEditDateText(dateOfBirthView);
     }
 
     /**
