@@ -11,14 +11,13 @@
         android:id="@+id/changeSettingsButton"
         android:layout_width="333dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#155FD4"
         android:onClick="EditUserButtonPress"
         android:text="EDIT PROFILE"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.539" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <View
         android:id="@+id/divider5"
@@ -109,7 +108,7 @@
         android:id="@+id/dob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="57dp"
         android:text="Date of Birth"
         app:layout_constraintStart_toStartOf="@+id/address"
         app:layout_constraintTop_toBottomOf="@+id/address" />
@@ -156,5 +155,23 @@
         android:text="UserAddress"
         app:layout_constraintStart_toStartOf="@+id/emailTextView"
         app:layout_constraintTop_toTopOf="@+id/address" />
+
+    <TextView
+        android:id="@+id/ZipAndCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="ZipAndCity"
+        app:layout_constraintStart_toStartOf="@+id/addressTextView"
+        app:layout_constraintTop_toBottomOf="@+id/addressTextView" />
+
+    <TextView
+        android:id="@+id/CountryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="CountryTextView"
+        app:layout_constraintStart_toStartOf="@+id/ZipAndCity"
+        app:layout_constraintTop_toBottomOf="@+id/ZipAndCity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
