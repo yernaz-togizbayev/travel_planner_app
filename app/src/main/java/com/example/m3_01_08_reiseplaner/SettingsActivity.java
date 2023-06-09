@@ -29,6 +29,8 @@ public class SettingsActivity extends AppCompatActivity {
         TextView passwordTextView = findViewById(R.id.passwordTextView);
         TextView dobTextView = findViewById(R.id.dobTextView);
         TextView addressTextView = findViewById(R.id.addressTextView);
+        TextView zipAndCity = findViewById(R.id.ZipAndCity);
+        TextView countryTextView = findViewById(R.id.CountryTextView);
 
         User currentUser = SignInActivity.getCurrentUser();
 
@@ -42,6 +44,13 @@ public class SettingsActivity extends AppCompatActivity {
         String[] address = currentUser.getAddress();
         String addressFull = address[0] + " " + address[1];
         addressTextView.setText(addressFull);
+
+        String zipCityAddress = currentUser.getAddress()[3] + " " + currentUser.getAddress()[2];
+        zipAndCity.setText(zipCityAddress);
+
+        String country = currentUser.getAddress()[4];
+        countryTextView.setText(country);
+
 
         String pw = String.format("%0" + currentUser.getPassword().length() + "d", 0);
         passwordTextView.setText(pw);

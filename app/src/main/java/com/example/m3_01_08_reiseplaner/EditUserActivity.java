@@ -1,13 +1,18 @@
 package com.example.m3_01_08_reiseplaner;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +41,11 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class EditUserActivity extends AppCompatActivity {
-    private Spinner countryDropDown; // drop-down menu for selecting the country
+    private TextView countryDropDown; // drop-down menu for selecting the country
+
+    Dialog countryDialog;
+
+    private List<String> listOfCountries = new ArrayList<>();
     private static final String INTENT_KEY_CALENDAR = "CalendarKey"; // key for passing calendar data
     private ActivityResultLauncher<Intent> calendarLauncher; // launcher for handling calendar activity
 
@@ -51,7 +60,7 @@ public class EditUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user);
 
-        countryDropDown = findViewById(R.id.CountryDropDown);
+        countryDropDown = findViewById(R.id.SearchCountryDropDownMenuSettings);
         setCountriesDropDownMenu();
 
         initializeCalendarLauncher();
@@ -114,7 +123,7 @@ public class EditUserActivity extends AppCompatActivity {
         String houseNr = ((EditText) findViewById(R.id.HouseNrEditText)).getText().toString();
         String city = ((EditText) findViewById(R.id.CityEditText)).getText().toString();
         String zipCode = ((EditText) findViewById(R.id.ZipCodeEditText)).getText().toString();
-        String country = countryDropDown.getSelectedItem().toString();
+        String country = ((TextView) findViewById(R.id.SearchCountryDropDownMenuSettings)).getText().toString();
         String email = ((EditText) findViewById(R.id.SignupEmailEditText)).getText().toString();
         String password = ((EditText) findViewById(R.id.SignupPasswordEditText)).getText().toString();
         String confirmPassword = ((EditText) findViewById(R.id.SignupConfirmPasswordEditText)).getText().toString();
@@ -286,8 +295,6 @@ public class EditUserActivity extends AppCompatActivity {
      */
     private void setCountriesDropDownMenu() {
         try {
-            List<String> listOfCountries = new ArrayList<>();
-
             InputStream inputStream = getResources().openRawResource(R.raw.countries);
             String jsonCountries = readJsonFile(inputStream);
 
@@ -301,15 +308,58 @@ public class EditUserActivity extends AppCompatActivity {
             }
 
             Collections.sort(listOfCountries);
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listOfCountries);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            countryDropDown.setAdapter(adapter);
-            countryDropDown.setSelection(adapter.getPosition(SignInActivity.getCurrentUser().getAddress()[4]));
-
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Shows a new dialog of the countries as dropdown menu.
+     * This method is called when the country dropdown view is clicked.
+     * @param view The view that was clicked.
+     */
+    public void showCountryDropdownDialog(View view) {
+        countryDialog = new Dialog(EditUserActivity.this);
+        countryDialog.setContentView(R.layout.searchable_countries_dropdown_menu);
+        countryDialog.getWindow().setLayout(800, 1200);
+        countryDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        countryDialog.show();
+
+        EditText searchCountry = countryDialog.findViewById(R.id.SearchCountry);
+        ListView listViewOfCountries = countryDialog.findViewById(R.id.ListOfCountries);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(EditUserActivity.this, android.R.layout.simple_list_item_1, listOfCountries);
+
+        listViewOfCountries.setAdapter(adapter);
+        searchCountry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        listViewOfCountries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                onCountryDropdownItemSelected(adapter.getItem(position));
+            }
+        });
+    }
+
+    /**
+     * Handles the selection of a country from the dropdown.
+     * This method is called when a country is selected in the dialog.
+     * @param selectedItem The country selected from the dropdown.
+     */
+    private void onCountryDropdownItemSelected(String selectedItem) {
+        countryDropDown.setText(selectedItem);
+        countryDialog.dismiss();
     }
 
     private boolean isEmailValid(String email){
