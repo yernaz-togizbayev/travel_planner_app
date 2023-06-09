@@ -79,18 +79,19 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="48dp"
         android:text="Username"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
     <TextView
         android:id="@+id/email"
-        android:layout_width="83dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="43dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="20dp"
         android:text="Email-Adress"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider6" />
@@ -101,6 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
         android:text="Address"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
@@ -108,10 +110,11 @@
         android:id="@+id/dob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="57dp"
+        android:layout_marginTop="19dp"
         android:text="Date of Birth"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/address"
-        app:layout_constraintTop_toBottomOf="@+id/address" />
+        app:layout_constraintTop_toBottomOf="@+id/CountryTextView" />
 
     <TextView
         android:id="@+id/password"
@@ -119,6 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
         android:text="Password"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/dob"
         app:layout_constraintTop_toBottomOf="@+id/dob" />
 
@@ -128,6 +132,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:text="UserEmail"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/email"
         app:layout_constraintTop_toTopOf="@+id/email" />
 
@@ -137,6 +142,7 @@
         android:layout_height="wrap_content"
         android:password="true"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/dobTextView"
         app:layout_constraintTop_toTopOf="@+id/password" />
 
@@ -145,6 +151,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="UserDOB"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/addressTextView"
         app:layout_constraintTop_toTopOf="@+id/dob" />
 
@@ -153,6 +160,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="UserAddress"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/emailTextView"
         app:layout_constraintTop_toTopOf="@+id/address" />
 
@@ -162,6 +170,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:text="ZipAndCity"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/addressTextView"
         app:layout_constraintTop_toBottomOf="@+id/addressTextView" />
 
@@ -171,6 +180,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:text="CountryTextView"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/ZipAndCity"
         app:layout_constraintTop_toBottomOf="@+id/ZipAndCity" />
 

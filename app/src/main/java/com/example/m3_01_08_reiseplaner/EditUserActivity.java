@@ -70,7 +70,7 @@ public class EditUserActivity extends AppCompatActivity {
         TextView houseNrView = findViewById(R.id.HouseNrEditText);
         TextView cityView = findViewById(R.id.CityEditText);
         TextView zipCodeView = findViewById(R.id.ZipCodeEditText);
-
+        TextView countryView = findViewById(R.id.SearchCountryDropDownMenuSettings);
         TextView emailView = findViewById(R.id.SignupEmailEditText);
         TextView passwordView = findViewById(R.id.SignupPasswordEditText);
         TextView confirmPasswordView = findViewById(R.id.SignupConfirmPasswordEditText);
@@ -86,6 +86,7 @@ public class EditUserActivity extends AppCompatActivity {
         houseNrView.setText(address[1]);
         cityView.setText(address[2]);
         zipCodeView.setText(address[3]);
+        countryView.setText(address[4]);
 
         dateOfBirthView.setText(currentUser.getDateOfBirth());
         emailView.setText(currentUser.getEmail());
