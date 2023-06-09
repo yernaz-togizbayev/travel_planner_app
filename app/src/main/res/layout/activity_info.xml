@@ -51,22 +51,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:height="72dp"
-            android:backgroundTint="#C3C3C3"
+            android:backgroundTint="#155FD4"
             android:gravity="center|start"
             android:insetTop="10dp"
             android:insetBottom="10dp"
             android:onClick="newFAQButtonPress"
-            android:text="FAQ             (Frequently Asked Questions)"
+            android:text="FAQ        (Frequently Asked Questions)"
+            android:textSize="16sp"
             app:icon="@mipmap/right_arrow_foreground"
             app:iconGravity="end"
-            app:iconTint="#3C3C3C" />
+            app:iconTint="@color/white" />
 
         <Button
             android:id="@+id/supportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:height="72dp"
-            android:backgroundTint="#C3C3C3"
+            android:backgroundTint="#155FD4"
             android:gravity="center|start"
             android:insetTop="10dp"
             android:insetBottom="10dp"
@@ -74,25 +75,27 @@
             android:onClick="newSupportButtonPress"
             android:pointerIcon="arrow"
             android:text="Contact us"
+            android:textSize="16sp"
             app:icon="@mipmap/right_arrow_foreground"
             app:iconGravity="end"
             app:iconSize="18dp"
-            app:iconTint="#3C3C3C" />
+            app:iconTint="@color/white" />
 
         <Button
             android:id="@+id/aboutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:height="72dp"
-            android:backgroundTint="#C3C3C3"
+            android:backgroundTint="#155FD4"
             android:gravity="center|start"
             android:insetTop="10dp"
             android:insetBottom="10dp"
             android:onClick="newAboutButtonPress"
             android:text="About"
+            android:textSize="16sp"
             app:icon="@mipmap/right_arrow_foreground"
             app:iconGravity="end"
-            app:iconTint="#3C3C3C" />
+            app:iconTint="@color/white" />
 
     </LinearLayout>
 
