@@ -53,7 +53,7 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
 - Editable and scrollable event overview
 
 <p align="center">
-  <img src="./images/screen_event_overview.png" alt="Sign Up" width="250"/>
+  <img src="./images/screen_event_overview.png" alt="Sign Up" width="249"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="./images/screen_add_event.png" alt="Sign In" width="250"/>
 </p>
@@ -67,7 +67,7 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
 <p align="center">
   <img src="./images/screen_about.png" alt="Sign Up" width="250"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./images/screen_settings.png" alt="Sign In" width="250"/>
+  <img src="./images/screen_settings.png" alt="Sign In" width="249"/>
 </p>
 
 
