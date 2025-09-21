@@ -59,12 +59,17 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
 </p>
 
 
----
-
 ### 🛠 Settings & Help
 - Edit profile (name, address, email, etc.)
 - Info section with FAQs and contact details
 - Improved UI with time pickers and input masks
+
+<p align="center">
+  <img src="./images/screen_about.png" alt="Sign Up" width="250"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./images/screen_settings.png" alt="Sign In" width="250"/>
+</p>
+
 
 ---
 
