@@ -21,7 +21,17 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
 ### 🔐 Authentication
 - User registration and login
 - Password reset with email validation
+- Password reset with email confirmation
 - Input format feedback and error handling
+
+<p align="center">
+  <img src="./images/screen_signup.png" alt="Sign Up" width="250"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="./images/screen_signin.png" alt="Sign In" width="246"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="./images/screen_reset.png" alt="Password Reset" width="250"/>
+</p>
+
 
 ### 🧭 Travel Planning
 - Search for travel routes based on preferences (eco / fast / cheap)
@@ -29,10 +39,27 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
 - Integration of Unsplash API for destination images
 - Bookings saved locally and linked to providers for final booking
 
+<p align="center">
+  <img src="./images/screen_search.png" alt="Sign Up" width="250"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./images/screen_recommendations.png" alt="Sign In" width="250"/>
+</p>
+
+
 ### 🗓️ Event Management
 - Users can create custom events for each trip
+- Add event with detailed input fields
 - Events include name, address, location, and icon
 - Editable and scrollable event overview
+
+<p align="center">
+  <img src="./images/screen_event_overview.png" alt="Sign Up" width="250"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./images/screen_add_event.png" alt="Sign In" width="250"/>
+</p>
+
+
+---
 
 ### 🛠 Settings & Help
 - Edit profile (name, address, email, etc.)
