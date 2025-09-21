@@ -24,8 +24,10 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
 - Password reset with email confirmation
 - Input format feedback and error handling
 <p align="center">
-  <img src="./images/screen_signup.png" alt="Sign Up" width="250" style="margin-right:100px;"/>
-  <img src="./images/screen_signin.png" alt="Sign In" width="246" style="margin-right:50px;"/>
+  <img src="./images/screen_signup.png" alt="Sign Up" width="250"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="./images/screen_signin.png" alt="Sign In" width="246"/>
+  &nbsp;&nbsp;&nbsp;
   <img src="./images/screen_reset.png" alt="Password Reset" width="250"/>
 </p>
 
