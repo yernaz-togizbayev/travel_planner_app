@@ -82,17 +82,6 @@ Usability tests revealed:
 
 ---
 
-## 📁 Project Structure
-
-hci-reiseplaner/
-├── app/ # Main Android app source code
-├── README_M3.md # Milestone 3 write-up
-├── README_M4.md # Milestone 4 final reflection
-├── build.gradle, etc. # Gradle configuration files
-
-
----
-
 ## 🚀 Future Plans
 
 - Fixing map bug for region-specific display
