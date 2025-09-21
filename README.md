@@ -45,10 +45,21 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
   <img src="./images/screen_recommendations.png" alt="Sign In" width="250"/>
 </p>
 
+
 ### 🗓️ Event Management
 - Users can create custom events for each trip
+- Add event with detailed input fields
 - Events include name, address, location, and icon
 - Editable and scrollable event overview
+
+<p align="center">
+  <img src="./images/screen_event_overview.png" alt="Sign Up" width="250"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./images/screen_add_event.png" alt="Sign In" width="250"/>
+</p>
+
+
+---
 
 ### 🛠 Settings & Help
 - Edit profile (name, address, email, etc.)
