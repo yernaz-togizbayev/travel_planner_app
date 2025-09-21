@@ -41,7 +41,7 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
 
 <p align="center">
   <img src="./images/screen_search.png" alt="Sign Up" width="250"/>
-  &nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="./images/screen_recommendations.png" alt="Sign In" width="250"/>
 </p>
 
