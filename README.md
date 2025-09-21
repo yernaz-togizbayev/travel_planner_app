@@ -40,9 +40,9 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
 - Bookings saved locally and linked to providers for final booking
 
 <p align="center">
-  <img src="./images/screen_search.png" alt="Sign Up" width="250"/>
+  <img src="./images/screen_search.png" alt="Search" width="250"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./images/screen_recommendations.png" alt="Sign In" width="250"/>
+  <img src="./images/screen_recommendations.png" alt="Recommendations" width="250"/>
 </p>
 
 
@@ -53,9 +53,9 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
 - Editable and scrollable event overview
 
 <p align="center">
-  <img src="./images/screen_event_overview.png" alt="Sign Up" width="250"/>
+  <img src="./images/screen_event_overview.png" alt="Event Overview" width="249"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./images/screen_add_event.png" alt="Sign In" width="250"/>
+  <img src="./images/screen_add_event.png" alt="Add Event" width="250"/>
 </p>
 
 
@@ -65,9 +65,9 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
 - Improved UI with time pickers and input masks
 
 <p align="center">
-  <img src="./images/screen_about.png" alt="Sign Up" width="250"/>
+  <img src="./images/screen_about.png" alt="About" width="250"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./images/screen_settings.png" alt="Sign In" width="250"/>
+  <img src="./images/screen_settings.png" alt="Settings" width="250"/>
 </p>
 
 
