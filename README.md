@@ -25,7 +25,7 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
 - Input format feedback and error handling
 <p align="center">
   <img src="./images/screen_signup.png" alt="Sign Up" width="250"/>
-  <img src="./images/screen_signin.png" alt="Sign In" width="230"/>
+  <img src="./images/screen_signin.png" alt="Sign In" width="245"/>
   <img src="./images/screen_reset.png" alt="Password Reset" width="250"/>
 </p>
 
