@@ -23,7 +23,12 @@ We identified gaps in existing travel apps: lack of clarity, cluttered UI, and p
 - Password reset with email validation
 - Password reset with email confirmation
 - Input format feedback and error handling
-![Sign Up](./images/screen_signup.png) ![Sign In](./images/screen_signin.png) ![Password Reset](./images/screen_reset.png)
+<p align="center">
+  <img src="./images/screen_signup.png" alt="Sign Up" width="250"/>
+  <img src="./images/screen_signin.png" alt="Sign In" width="250"/>
+  <img src="./images/screen_reset.png" alt="Password Reset" width="250"/>
+</p>
+
 
 ### 🧭 Travel Planning
 - Search for travel routes based on preferences (eco / fast / cheap)
